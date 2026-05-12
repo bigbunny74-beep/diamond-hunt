@@ -32,8 +32,8 @@ jobs:
           mkdir -p gradle/wrapper
 
           cp index.html app/src/main/assets/
-          [ -f board.png ]       && cp board.png       app/src/main/assets/
-          [ -f title-music.mp3 ] && cp title-music.mp3 app/src/main/assets/
+          [ -f assets/board.png ]       && cp assets/board.png       app/src/main/assets/ || [ -f board.png ] && cp board.png app/src/main/assets/ || echo 'board.png not found'
+          [ -f assets/title-music.mp3 ] && cp assets/title-music.mp3 app/src/main/assets/ || [ -f title-music.mp3 ] && cp title-music.mp3 app/src/main/assets/ || echo 'title-music.mp3 not found'
 
           # URLs auto-detect file:// vs http:// at runtime — no patching needed
 
