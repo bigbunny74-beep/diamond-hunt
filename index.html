@@ -927,7 +927,9 @@ button,.mbtn,.mbtn2,.abtn,.tbtn,.rtab,.top-btn{touch-action:manipulation;cursor:
    ================================================================ */
 
 /* ── DATA ─────────────────────────────────────────────────────── */
-const BOARD_IMG_URL = "./board.png";
+const BOARD_IMG_URL = (location.protocol === "file:"
+  ? "file:///android_asset/board.png"
+  : "./board.png");
 let _boardImg = null;
 let _boardImgLoaded = false;
 
@@ -1627,7 +1629,9 @@ function $(id){return document.getElementById(id);}
 
 /* ── BACKGROUND MUSIC ────────────────────────────────────────── */
 const BGM = (() => {
-  const URL = "./title-music.mp3";
+  const URL = (location.protocol === "file:"
+    ? "file:///android_asset/title-music.mp3"
+    : "./title-music.mp3");
   const MUSIC_SCREENS = new Set(["sTitle","sSetup","sRules","sStats"]);
   let _audio   = null;
   let _ready   = false;
