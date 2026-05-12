@@ -40,8 +40,7 @@ jobs:
 
           cat > app/src/main/AndroidManifest.xml << 'XML'
           <?xml version="1.0" encoding="utf-8"?>
-          <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-              package="com.diamondhunt.game">
+          <manifest xmlns:android="http://schemas.android.com/apk/res/android">
             <uses-permission android:name="android.permission.VIBRATE"/>
             <application
                 android:label="Diamond Hunt"
@@ -136,7 +135,7 @@ jobs:
           cat > build.gradle << 'GRADLE'
           buildscript {
             repositories { google(); mavenCentral() }
-            dependencies { classpath 'com.android.tools.build:gradle:8.2.0' }
+            dependencies { classpath 'com.android.tools.build:gradle:8.7.0' }
           }
           allprojects { repositories { google(); mavenCentral() } }
           GRADLE
@@ -144,6 +143,7 @@ jobs:
           cat > app/build.gradle << 'GRADLE'
           apply plugin: 'com.android.application'
           android {
+            namespace "com.diamondhunt.game"
             compileSdkVersion 34
             defaultConfig {
               applicationId "com.diamondhunt.game"
@@ -157,7 +157,7 @@ jobs:
           GRADLE
 
           cat > gradle/wrapper/gradle-wrapper.properties << 'PROPS'
-          distributionUrl=https\://services.gradle.org/distributions/gradle-8.2-bin.zip
+          distributionUrl=https\://services.gradle.org/distributions/gradle-8.9-bin.zip
           PROPS
 
           gradle assembleDebug --no-daemon
