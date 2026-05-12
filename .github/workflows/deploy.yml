@@ -1,4 +1,4 @@
-name: 🎮 Build & Deploy Diamond Hunt
+name: Build Diamond Hunt APK
 
 on:
   push:
@@ -7,30 +7,10 @@ on:
 
 permissions:
   contents: write
-  pages: write
-  id-token: write
 
 jobs:
-
-  # ── Deploy to GitHub Pages (play in browser) ───────────────────────────
-  pages:
-    name: 🌐 Deploy to GitHub Pages
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deploy.outputs.page_url }}
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/configure-pages@v4
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: .
-      - id: deploy
-        uses: actions/deploy-pages@v4
-
-  # ── Build Android APK (install on phone) ──────────────────────────────
   apk:
-    name: 📱 Build Android APK
+    name: Build APK
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -40,34 +20,29 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      - name: Build APK with Gradle
-        run: |
-          # Install Android SDK build tools
-          yes | sdkmanager "build-tools;34.0.0" "platforms;android-34" 2>/dev/null | tail -1
+      - uses: android-actions/setup-android@v3
 
-          # Create minimal Android project on the fly
+      - name: Build APK
+        run: |
           mkdir -p app/src/main/java/com/diamondhunt/game
           mkdir -p app/src/main/assets
           mkdir -p app/src/main/res/mipmap-hdpi
           mkdir -p app/src/main/res/mipmap-xxxhdpi
           mkdir -p app/src/main/res/values
+          mkdir -p gradle/wrapper
 
-          # Copy game + assets
           cp index.html app/src/main/assets/
           [ -f board.png ]       && cp board.png       app/src/main/assets/
           [ -f title-music.mp3 ] && cp title-music.mp3 app/src/main/assets/
 
-          # Fix paths for Android local assets
-          sed -i 's|"./board.png"|"file:///android_asset/board.png"|g' app/src/main/assets/index.html
+          sed -i 's|"./board.png"|"file:///android_asset/board.png"|g'             app/src/main/assets/index.html
           sed -i 's|"./title-music.mp3"|"file:///android_asset/title-music.mp3"|g' app/src/main/assets/index.html
 
-          # AndroidManifest
           cat > app/src/main/AndroidManifest.xml << 'XML'
           <?xml version="1.0" encoding="utf-8"?>
           <manifest xmlns:android="http://schemas.android.com/apk/res/android"
               package="com.diamondhunt.game">
             <uses-permission android:name="android.permission.VIBRATE"/>
-            <uses-permission android:name="android.permission.INTERNET"/>
             <application
                 android:label="Diamond Hunt"
                 android:icon="@mipmap/ic_launcher"
@@ -86,7 +61,6 @@ jobs:
           </manifest>
           XML
 
-          # MainActivity
           cat > app/src/main/java/com/diamondhunt/game/MainActivity.java << 'JAVA'
           package com.diamondhunt.game;
           import android.app.Activity;
@@ -101,7 +75,8 @@ jobs:
               getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                                    WindowManager.LayoutParams.FLAG_FULLSCREEN);
               getWindow().getDecorView().setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_FULLSCREEN|View.SYSTEM_UI_FLAG_HIDE_NAVIGATION|
+                View.SYSTEM_UI_FLAG_FULLSCREEN |
+                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION |
                 View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
               wv = new WebView(this);
               WebSettings s = wv.getSettings();
@@ -120,25 +95,25 @@ jobs:
           }
           JAVA
 
-          # Minimal icon PNG (red diamond, 48px)
           python3 -c "
           import struct,zlib,math
           def chunk(t,d):
-            c=t+d; return struct.pack('>I',len(d))+c+struct.pack('>I',zlib.crc32(c)&0xffffffff)
+            c=t+d
+            return struct.pack('>I',len(d))+c+struct.pack('>I',zlib.crc32(c)&0xffffffff)
           def icon(sz):
             cx=cy=sz/2; hw=cx*0.78; hh=cy*0.82; rows=[]
             for y in range(sz):
-              r=b'\x00'
+              row=b'\x00'
               for x in range(sz):
                 in_d=(abs(x-cx)/hw+abs(y-cy)/hh)<=1
                 if in_d:
                   t=(x+y)/(sz*2)
-                  if t<0.3: c=(220,240,255,255)
-                  elif t<0.6: c=(100,170,240,255)
-                  else: c=(32,96,192,255)
-                else: c=(26,8,0,255)
-                r+=bytes(c)
-              rows.append(r)
+                  if t<0.3: px=(220,240,255,255)
+                  elif t<0.6: px=(100,170,240,255)
+                  else: px=(32,96,192,255)
+                else: px=(26,8,0,255)
+                row+=bytes(px)
+              rows.append(row)
             raw=b''.join(rows)
             sig=b'\x89PNG\r\n\x1a\n'
             ihdr=chunk(b'IHDR',struct.pack('>IIBBBBB',sz,sz,8,6,0,0,0))
@@ -147,16 +122,13 @@ jobs:
             return sig+ihdr+idat+iend
           open('app/src/main/res/mipmap-hdpi/ic_launcher.png','wb').write(icon(72))
           open('app/src/main/res/mipmap-xxxhdpi/ic_launcher.png','wb').write(icon(192))
-          print('icons ok')
           "
 
-          # Strings
           cat > app/src/main/res/values/strings.xml << 'XML'
           <?xml version="1.0" encoding="utf-8"?>
           <resources><string name="app_name">Diamond Hunt</string></resources>
           XML
 
-          # build.gradle files
           cat > settings.gradle << 'GRADLE'
           include ':app'
           GRADLE
@@ -182,37 +154,34 @@ jobs:
             }
             buildTypes { debug { minifyEnabled false } }
           }
-          dependencies { implementation 'androidx.appcompat:appcompat:1.6.1' }
           GRADLE
 
           cat > gradle/wrapper/gradle-wrapper.properties << 'PROPS'
           distributionUrl=https\://services.gradle.org/distributions/gradle-8.2-bin.zip
           PROPS
 
-          # Build
-          gradle assembleDebug --no-daemon --stacktrace
+          gradle assembleDebug --no-daemon
 
-      - name: Upload APK
+      - name: Upload APK artifact
         uses: actions/upload-artifact@v4
         with:
           name: DiamondHunt
           path: app/build/outputs/apk/debug/app-debug.apk
           retention-days: 90
 
-      - name: Release
+      - name: Release APK
         uses: softprops/action-gh-release@v2
         with:
           tag_name: latest
-          name: "📱 Diamond Hunt — Install on Android"
+          name: "Diamond Hunt — Latest APK"
           body: |
-            ## Install Diamond Hunt on Android
+            ## Install on Android
 
-            1. Download **app-debug.apk** below  
-            2. Open it on your Android phone  
-            3. Tap **Install** (allow unknown sources if asked)  
+            1. Download **app-debug.apk** below
+            2. Open it on your Android phone
+            3. Tap **Install**
 
-            ✅ Works fully offline after install  
-            🎮 Also playable in browser: https://bigbunny74-beep.github.io/diamond-hunt
+            ✅ Fully offline after install
           files: app/build/outputs/apk/debug/app-debug.apk
           make_latest: true
         env:
