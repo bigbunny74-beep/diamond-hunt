@@ -35,8 +35,7 @@ jobs:
           [ -f board.png ]       && cp board.png       app/src/main/assets/
           [ -f title-music.mp3 ] && cp title-music.mp3 app/src/main/assets/
 
-          sed -i 's|"./board.png"|"file:///android_asset/board.png"|g'             app/src/main/assets/index.html
-          sed -i 's|"./title-music.mp3"|"file:///android_asset/title-music.mp3"|g' app/src/main/assets/index.html
+          # URLs auto-detect file:// vs http:// at runtime — no patching needed
 
           cat > app/src/main/AndroidManifest.xml << 'XML'
           <?xml version="1.0" encoding="utf-8"?>
@@ -94,34 +93,68 @@ jobs:
           }
           JAVA
 
-          python3 -c "
-          import struct,zlib,math
-          def chunk(t,d):
-            c=t+d
-            return struct.pack('>I',len(d))+c+struct.pack('>I',zlib.crc32(c)&0xffffffff)
-          def icon(sz):
-            cx=cy=sz/2; hw=cx*0.78; hh=cy*0.82; rows=[]
-            for y in range(sz):
-              row=b'\x00'
-              for x in range(sz):
-                in_d=(abs(x-cx)/hw+abs(y-cy)/hh)<=1
-                if in_d:
-                  t=(x+y)/(sz*2)
-                  if t<0.3: px=(220,240,255,255)
-                  elif t<0.6: px=(100,170,240,255)
-                  else: px=(32,96,192,255)
-                else: px=(26,8,0,255)
-                row+=bytes(px)
-              rows.append(row)
-            raw=b''.join(rows)
-            sig=b'\x89PNG\r\n\x1a\n'
-            ihdr=chunk(b'IHDR',struct.pack('>IIBBBBB',sz,sz,8,6,0,0,0))
-            idat=chunk(b'IDAT',zlib.compress(raw,6))
-            iend=chunk(b'IEND',b'')
-            return sig+ihdr+idat+iend
-          open('app/src/main/res/mipmap-hdpi/ic_launcher.png','wb').write(icon(72))
-          open('app/src/main/res/mipmap-xxxhdpi/ic_launcher.png','wb').write(icon(192))
-          "
+          python3 << 'PYEOF'
+import struct,zlib,math,os
+def chunk(t,d):
+  c=t+d; return struct.pack('>I',len(d))+c+struct.pack('>I',zlib.crc32(c)&0xffffffff)
+def clamp(v): return max(0,min(255,int(v)))
+def make_icon(sz):
+  cx=cy=sz/2.0; pad=sz*0.08; hw=cx-pad; hh=cy-pad
+  top=(cx,pad); bot=(cx,sz-pad)
+  rows=[]
+  for y in range(sz):
+    row=b'\x00'
+    for x in range(sz):
+      in_d=(abs(x-cx)/hw+abs(y-cy)/hh)<=1.0
+      if not in_d:
+        dx,dy=(x-cx)/cx,(y-cy)/cy
+        dist=math.sqrt(dx*dx+dy*dy)
+        bg_t=min(1.0,dist*0.7)
+        row+=bytes([clamp(20+bg_t*10),clamp(6+bg_t*4),0,255])
+        continue
+      if y<=cy:
+        nx=(x-cx)/hw; ny=-(y-cy)/hh
+        ts=0.42
+        if abs(nx)+abs(ny)<ts:
+          t=(abs(nx)+abs(ny))/ts
+          r=clamp(210+(1-t)*45); g=clamp(230+(1-t)*25); b=255
+        else:
+          ang=math.atan2(ny,nx)
+          sec=int((ang+math.pi)/(math.pi/4))%8
+          base=(165,215,255) if sec%2==0 else (85,145,220)
+          et=max(0,min(1,(abs(nx)+abs(ny)-ts)/(1-ts)))
+          r=clamp(base[0]*(1-et*0.45)); g=clamp(base[1]*(1-et*0.40)); b=clamp(base[2]*(1-et*0.20))
+        hlx=cx-hw*0.20; hly=top[1]+hh*0.18; hlr=sz*0.12
+        hld=math.sqrt((x-hlx)**2+(y-hly)**2)/hlr
+        if hld<1.0:
+          ht=(1-hld)**2.2*0.75; r=clamp(r+(255-r)*ht); g=clamp(g+(255-g)*ht); b=clamp(b+(255-b)*ht)
+      else:
+        nx=(x-cx)/hw; ny=(y-cy)/hh
+        ang=math.atan2(ny,nx)
+        sec=int((ang+math.pi)/(math.pi/4))%8
+        base=(35,85,175) if sec%2==1 else (65,125,210)
+        r=clamp(base[0]*(1-ny*0.60)); g=clamp(base[1]*(1-ny*0.55)); b=clamp(base[2]*(1-ny*0.30))
+      gd=abs(y-cy); gw=max(1.0,sz*0.012)
+      if gd<gw:
+        gt=(1-gd/gw)**1.5
+        r=clamp(r*(1-gt)+230*gt); g=clamp(g*(1-gt)+175*gt); b=clamp(b*(1-gt)+20*gt)
+      ev=abs(x-cx)/hw+abs(y-cy)/hh; ed=(1-ev)*min(hw,hh); ow=max(1.2,sz*0.018)
+      if ed<ow:
+        ot=(1-ed/ow)**2*0.85
+        r=clamp(r*(1-ot)+240*ot); g=clamp(g*(1-ot)+185*ot); b=clamp(b*(1-ot)+15*ot)
+      row+=bytes([r,g,b,255])
+    rows.append(row)
+  raw=b''.join(rows)
+  sig=b'\x89PNG\r\n\x1a\n'
+  ihdr=chunk(b'IHDR',struct.pack('>IIBBBBB',sz,sz,8,6,0,0,0))
+  idat=chunk(b'IDAT',zlib.compress(raw,6))
+  iend=chunk(b'IEND',b'')
+  return sig+ihdr+idat+iend
+for folder,sz in [('mipmap-mdpi',48),('mipmap-hdpi',72),('mipmap-xhdpi',96),('mipmap-xxhdpi',144),('mipmap-xxxhdpi',192)]:
+  os.makedirs(f'app/src/main/res/{folder}',exist_ok=True)
+  open(f'app/src/main/res/{folder}/ic_launcher.png','wb').write(make_icon(sz))
+  print(f'icon {folder} {sz}px')
+PYEOF
 
           cat > app/src/main/res/values/strings.xml << 'XML'
           <?xml version="1.0" encoding="utf-8"?>
