@@ -696,7 +696,7 @@ button,.mbtn,.mbtn2,.abtn,.tbtn,.rtab,.top-btn{touch-action:manipulation;cursor:
   <!-- Full-bleed rotated background image -->
   <div id="hero-bg">
     <img id="hero-img"
-      src="https://raw.githubusercontent.com/bigbunny74-beep/diamond-hunt/refs/heads/main/assets/gamecover.png"
+      src=""
       alt="" draggable="false">
   </div>
 
@@ -1626,6 +1626,16 @@ window.addEventListener("load",()=>{
 });
 
 function $(id){return document.getElementById(id);}
+
+// Set hero background image path based on environment
+(function(){
+  const heroImg = document.getElementById("hero-img");
+  if(heroImg){
+    heroImg.src = location.protocol === "file:"
+      ? "file:///android_asset/gamecover.png"
+      : "./assets/gamecover.png";
+  }
+})();
 
 /* ── BACKGROUND MUSIC ────────────────────────────────────────── */
 const BGM = (() => {
