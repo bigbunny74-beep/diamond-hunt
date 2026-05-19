@@ -100,7 +100,8 @@ body{background:#0e0600;font-family:Georgia,serif;color:#f5e6c8;overscroll-behav
 }
 
 /* menu buttons */
-.mbtn{display:block;width:min(290px,84vw);padding:13px 20px;margin:7px auto;border-radius:50px;font-size:clamp(13px,4vw,17px);font-family:Georgia,serif;font-weight:bold;cursor:pointer;letter-spacing:1px;outline:none;touch-action:manipulation;-webkit-appearance:none;appearance:none;border:2px solid transparent;transition:transform .14s}
+.mbtn{display:flex;align-items:center;justify-content:center;gap:9px;width:min(290px,84vw);padding:13px 20px;margin:7px auto;border-radius:50px;font-size:clamp(13px,4vw,17px);font-family:Georgia,serif;font-weight:bold;cursor:pointer;letter-spacing:1px;outline:none;touch-action:manipulation;-webkit-appearance:none;appearance:none;border:2px solid transparent;transition:transform .14s}
+.mbtn svg{flex-shrink:0;}
 .mbtn:active{transform:scale(.95)}
 .mbtn-gold{background:linear-gradient(135deg,#b87010,#f5c842,#c08010);color:#150800;border-color:#b87010}
 .mbtn-green{background:linear-gradient(135deg,#183e0a,#28621a,#183e0a);color:#a0f060;border-color:#28621a}
@@ -552,32 +553,32 @@ button,.mbtn,.mbtn2,.abtn,.tbtn,.rtab,.top-btn{touch-action:manipulation;cursor:
   color:#f5c842;text-align:center;letter-spacing:2px;
   margin-bottom:4px;
 }
-.stats-sub{font-size:12px;color:#907050;text-align:center;margin-bottom:20px;letter-spacing:1px;}
+.stats-sub{font-size:12px;color:#b08860;text-align:center;margin-bottom:20px;letter-spacing:1px;}
 .stats-section{margin-bottom:18px;}
 .stats-section-lbl{
-  font-size:11px;color:#6a4828;letter-spacing:2px;text-transform:uppercase;
-  border-bottom:1px solid rgba(200,160,60,.15);padding-bottom:4px;margin-bottom:10px;
+  font-size:11px;color:#c9973a;letter-spacing:2px;text-transform:uppercase;
+  border-bottom:1px solid rgba(200,160,60,.25);padding-bottom:4px;margin-bottom:10px;
 }
 .stat-row{
   display:flex;align-items:center;justify-content:space-between;
   padding:8px 12px;border-radius:10px;
-  background:rgba(255,255,255,.03);margin-bottom:5px;
-  border:1px solid rgba(200,160,60,.08);
+  background:rgba(255,255,255,.05);margin-bottom:5px;
+  border:1px solid rgba(200,160,60,.15);
 }
 .stat-row .sr-icon{font-size:18px;width:26px;text-align:center;flex-shrink:0;}
-.stat-row .sr-lbl{flex:1;font-family:Georgia,serif;font-size:13px;color:#c9973a;padding:0 10px;}
+.stat-row .sr-lbl{flex:1;font-family:Georgia,serif;font-size:13px;color:#e0b870;padding:0 10px;}
 .stat-row .sr-val{font-family:'Courier New',monospace;font-size:15px;font-weight:bold;color:#f5c842;}
 
 /* Leaderboard table */
 .lb-table{width:100%;border-collapse:collapse;margin-top:4px;}
 .lb-table th{
-  font-size:10px;color:#6a4828;letter-spacing:1px;text-transform:uppercase;
-  padding:4px 8px;text-align:left;border-bottom:1px solid rgba(200,160,60,.15);
+  font-size:11px;color:#c9973a;letter-spacing:1px;text-transform:uppercase;
+  padding:6px 8px;text-align:left;border-bottom:1px solid rgba(200,160,60,.3);
 }
 .lb-table th:last-child,.lb-table td:last-child{text-align:right;}
 .lb-row td{
-  font-size:13px;padding:7px 8px;border-bottom:1px solid rgba(255,255,255,.04);
-  font-family:Georgia,serif;color:#c9973a;
+  font-size:13px;padding:8px 8px;border-bottom:1px solid rgba(255,255,255,.07);
+  font-family:Georgia,serif;color:#e0b870;
 }
 .lb-row:first-child td{color:#f5c842;font-weight:bold;}
 .lb-row:first-child td:first-child::before{content:"🥇 ";}
@@ -585,13 +586,13 @@ button,.mbtn,.mbtn2,.abtn,.tbtn,.rtab,.top-btn{touch-action:manipulation;cursor:
 .lb-row:nth-child(3) td:first-child::before{content:"🥉 ";}
 .lb-medal{font-size:16px;width:24px;display:inline-block;}
 .lb-wr{color:#f5c842!important;font-family:'Courier New',monospace!important;}
-.stats-empty{text-align:center;color:#503828;font-size:13px;padding:24px 0;font-family:Georgia,serif;}
+.stats-empty{text-align:center;color:#b08860;font-size:13px;padding:24px 0;font-family:Georgia,serif;}
 .stats-reset{
-  font-size:11px;color:#503828;background:none;border:1px solid rgba(120,80,40,.3);
+  font-size:11px;color:#b08860;background:none;border:1px solid rgba(200,160,60,.3);
   border-radius:8px;padding:5px 12px;cursor:pointer;font-family:Georgia,serif;
   margin-top:6px;transition:color .15s,border-color .15s;
 }
-.stats-reset:hover{color:#c9973a;border-color:rgba(200,160,60,.4);}
+.stats-reset:hover{color:#f5c842;border-color:rgba(200,160,60,.6);}
 @media screen and (min-width:520px){
   .stats-title{font-size:26px;}
   .stat-row .sr-lbl{font-size:15px;}
@@ -683,7 +684,7 @@ button,.mbtn,.mbtn2,.abtn,.tbtn,.rtab,.top-btn{touch-action:manipulation;cursor:
 </div>
 
 <div id="loader">
-  <div id="loader-gem">💎</div>
+  <div id="loader-gem"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5L2 9l10 12L22 9l-3-6zm-8.5 11.5L5.66 9H8.5l2 5.5zm3 0l-2-5.5h3l-2 5.5zM12 18l-2.5-6.5h5L12 18zm5-9h2.34L17 14.5 15.5 9H17zm-9.5 0h1.5L7.5 14.5 6 9H7.5z"/></svg></div>
   <div id="loader-title">Diamond Hunt</div>
   <div id="loader-bar-wrap"><div id="loader-bar"></div></div>
   <div id="loader-label">Loading…</div>
@@ -720,10 +721,22 @@ button,.mbtn,.mbtn2,.abtn,.tbtn,.rtab,.top-btn{touch-action:manipulation;cursor:
 
   <!-- Frosted menu panel — full width, straight corners, buttons last in DOM -->
   <div id="menu-lower">
-    <button class="mbtn mbtn-gold" id="btn-multi">👥 Multiplayer — 2 to 6 Players</button>
-    <button class="mbtn mbtn-green" id="btn-ai">🤖 Play vs Computer</button>
-    <button class="mbtn mbtn-slate" id="btn-rules">📖 Rules &amp; Instructions</button>
-    <button class="mbtn mbtn-slate" id="btn-stats" style="padding:10px;font-size:clamp(10px,2.8vw,13px);margin:4px auto;">📊 Hall of Fame</button>
+    <button class="mbtn mbtn-gold" id="btn-multi">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+      Multiplayer — 2 to 6 Players
+    </button>
+    <button class="mbtn mbtn-green" id="btn-ai">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20 9V7c0-1.1-.9-2-2-2h-3c0-1.66-1.34-3-3-3S9 3.34 9 5H6c-1.1 0-2 .9-2 2v2c-1.66 0-3 1.34-3 3s1.34 3 3 3v4c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-4c1.66 0 3-1.34 3-3s-1.34-3-3-3zm-2 10H6V7h12v12zm-9-6c-.83 0-1.5-.67-1.5-1.5S8.17 10 9 10s1.5.67 1.5 1.5S9.83 13 9 13zm6 0c-.83 0-1.5-.67-1.5-1.5S14.17 10 15 10s1.5.67 1.5 1.5S15.83 13 15 13zm-3 3l-2-2h4l-2 2z"/></svg>
+      Play vs Computer
+    </button>
+    <button class="mbtn mbtn-slate" id="btn-rules">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M21 5c-1.11-.35-2.33-.5-3.5-.5-1.95 0-4.05.4-5.5 1.5-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1zm0 13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V8c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5v11.5z"/></svg>
+      Rules &amp; Instructions
+    </button>
+    <button class="mbtn mbtn-slate" id="btn-stats" style="padding:10px;font-size:clamp(10px,2.8vw,13px);margin:4px auto;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M7 11H1v8h6v-8zm6-8H7v16h6V3zm6 5h-6v11h6V8z"/></svg>
+      Hall of Fame
+    </button>
     <div class="copy">© 1982 Waddingtons Games Ltd · Based on Afrikan Tähti by Kari Mannerla</div>
   </div>
 
@@ -749,7 +762,10 @@ button,.mbtn,.mbtn2,.abtn,.tbtn,.rtab,.top-btn{touch-action:manipulation;cursor:
       <div id="setup-rows"></div>
     </div>
     <div style="display:flex;flex-direction:column;gap:8px;align-items:center;margin-top:14px">
-      <button class="mbtn mbtn-gold" style="margin:0" id="btn-start">🗺️ Start Adventure!</button>
+      <button class="mbtn mbtn-gold" style="margin:0" id="btn-start">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M20.5 3l-.16.03L15 5.1 9 3 3.36 4.9c-.21.07-.36.25-.36.48V20.5c0 .28.22.5.5.5l.16-.03L9 18.9l6 2.1 5.64-1.9c.21-.07.36-.25.36-.48V3.5c0-.28-.22-.5-.5-.5zM15 19l-6-2.11V5l6 2.11V19z"/></svg>
+        Start Adventure!
+      </button>
       <button class="mbtn mbtn-slate" style="margin:0;padding:9px" id="btn-back-title">← Back</button>
     </div>
   </div>
@@ -759,7 +775,10 @@ button,.mbtn,.mbtn2,.abtn,.tbtn,.rtab,.top-btn{touch-action:manipulation;cursor:
 <div id="sRules" class="screen off">
   <div class="rules-shell">
 
-    <div class="rh1">📖 How to Play</div>
+    <div class="rh1">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle;margin-right:6px"><path d="M21 5c-1.11-.35-2.33-.5-3.5-.5-1.95 0-4.05.4-5.5 1.5-1.45-1.1-3.55-1.5-5.5-1.5S2.45 4.9 1 6v14.65c0 .25.25.5.5.5.1 0 .15-.05.25-.05C3.1 20.45 5.05 20 6.5 20c1.95 0 4.05.4 5.5 1.5 1.35-.85 3.8-1.5 5.5-1.5 1.65 0 3.35.3 4.75 1.05.1.05.15.05.25.05.25 0 .5-.25.5-.5V6c-.6-.45-1.25-.75-2-1zm0 13.5c-1.1-.35-2.3-.5-3.5-.5-1.7 0-4.15.65-5.5 1.5V8c1.35-.85 3.8-1.5 5.5-1.5 1.2 0 2.4.15 3.5.5v11.5z"/></svg>
+      How to Play
+    </div>
 
     <!-- Tab bar -->
     <div class="rtabs" id="rtabs">
@@ -971,46 +990,109 @@ const CITIES = {
   capetown:    {n:"Cape Town",      x:.490,y:.870},
 };
 
+// ── ROUTE DATA WITH STEP COUNTS ─────────────────────────────────
+// Each entry: [cityA, cityB, steps]
+// Steps = number of dot spaces on that route from the real board.
 const LAND_R=[
-  ["tangier","casablanca"],["tangier","tunis"],["tangier","sahara"],
-  ["casablanca","canary"],["casablanca","sierraleone"],
-  ["tunis","cairo"],["tunis","sahara"],
-  ["cairo","ashanti"],["cairo","portsudan"],
-  ["sahara","timbuktu"],["sahara","khartoum"],
-  ["ashanti","portsudan"],["ashanti","khartoum"],
-  ["portsudan","khartoum"],["portsudan","abeba"],["portsudan","capeguard"],
-  ["timbuktu","sierraleone"],["timbuktu","goldcoast"],["timbuktu","lagos"],
-  ["sierraleone","goldcoast"],["goldcoast","lagos"],
-  ["khartoum","abeba"],["abeba","capeguard"],["abeba","lakevic"],
-  ["lagos","katanga"],["lagos","luanda"],
-  ["katanga","luanda"],["katanga","lakevic"],["katanga","vicfalls"],["katanga","darsalaam"],
-  ["lakevic","darsalaam"],["lakevic","mozambique"],
-  ["luanda","whalfbay"],["luanda","vicfalls"],
-  ["vicfalls","dragmtn"],["vicfalls","whalfbay"],
-  ["darsalaam","mozambique"],["mozambique","dragmtn"],["mozambique","tamatave"],
-  ["tamatave","capestmarie"],["dragmtn","capetown"],["whalfbay","capetown"],
+  ["tangier","casablanca",2],
+  ["tangier","tunis",3],
+  ["tangier","sahara",4],
+  ["casablanca","sierraleone",5],
+  ["tunis","cairo",2],
+  ["tunis","sahara",3],
+  ["cairo","ashanti",4],
+  ["cairo","portsudan",3],
+  ["sahara","timbuktu",3],
+  ["sahara","khartoum",4],
+  ["ashanti","portsudan",3],
+  ["ashanti","khartoum",2],
+  ["portsudan","khartoum",2],
+  ["portsudan","abeba",2],
+  ["portsudan","capeguard",3],
+  ["timbuktu","sierraleone",3],
+  ["timbuktu","goldcoast",2],
+  ["timbuktu","lagos",2],
+  ["sierraleone","goldcoast",2],
+  ["goldcoast","lagos",2],
+  ["khartoum","abeba",2],
+  ["abeba","capeguard",3],
+  ["abeba","lakevic",3],
+  ["lagos","katanga",4],
+  ["lagos","luanda",4],
+  ["katanga","luanda",3],
+  ["katanga","lakevic",2],
+  ["katanga","vicfalls",2],
+  ["katanga","darsalaam",3],
+  ["lakevic","darsalaam",2],
+  ["lakevic","mozambique",3],
+  ["luanda","whalfbay",2],
+  ["luanda","vicfalls",3],
+  ["vicfalls","dragmtn",2],
+  ["vicfalls","whalfbay",2],
+  ["darsalaam","mozambique",2],
+  ["mozambique","dragmtn",3],
+  ["mozambique","tamatave",3],
+  ["tamatave","capestmarie",2],
+  ["dragmtn","capetown",2],
+  ["whalfbay","capetown",2],
 ];
 const SEA_R=[
-  ["tangier","canary"],["canary","sierraleone"],
-  ["sierraleone","capetown"],["capetown","capestmarie"],
-  ["capestmarie","tamatave"],["tamatave","capeguard"],["capeguard","cairo"],
-  ["casablanca","goldcoast"],["luanda","capetown"],["mozambique","capestmarie"],
+  ["tangier","canary",3],
+  ["casablanca","canary",2],
+  ["canary","sierraleone",4],
+  ["sierraleone","capetown",6],
+  ["capetown","capestmarie",5],
+  ["capestmarie","tamatave",2],
+  ["tamatave","capeguard",5],
+  ["capeguard","cairo",4],
+  ["casablanca","goldcoast",5],
+  ["luanda","capetown",4],
+  ["mozambique","capestmarie",3],
 ];
 const AIR_R=[];
 
-// Build adjacency once
+// Build adjacency — stores {to, steps, type} objects
 const ADJ={};
 const ensAdj=k=>{if(!ADJ[k])ADJ[k]={land:[],sea:[],air:[]};};
 Object.keys(CITIES).forEach(ensAdj);
-const SEA_SET=new Set(SEA_R.map(([a,b])=>[a,b].sort().join("|")));
-LAND_R.forEach(([a,b])=>{ensAdj(a);ensAdj(b);
-  if(!SEA_SET.has([a,b].sort().join("|"))){ADJ[a].land.push(b);ADJ[b].land.push(a);}
+LAND_R.forEach(([a,b,s])=>{
+  ensAdj(a);ensAdj(b);
+  ADJ[a].land.push({to:b,steps:s});
+  ADJ[b].land.push({to:a,steps:s});
 });
-SEA_R.forEach(([a,b])=>{ensAdj(a);ensAdj(b);ADJ[a].sea.push(b);ADJ[b].sea.push(a);});
-AIR_R.forEach(([a,b])=>{ensAdj(a);ensAdj(b);
-  if(!ADJ[a].air.includes(b))ADJ[a].air.push(b);
-  if(!ADJ[b].air.includes(a))ADJ[b].air.push(a);
+SEA_R.forEach(([a,b,s])=>{
+  ensAdj(a);ensAdj(b);
+  ADJ[a].sea.push({to:b,steps:s});
+  ADJ[b].sea.push({to:a,steps:s});
 });
+AIR_R.forEach(([a,b,s])=>{
+  ensAdj(a);ensAdj(b);
+  ADJ[a].air.push({to:b,steps:s||1});
+  ADJ[b].air.push({to:a,steps:s||1});
+});
+
+// ── DOT POSITION ────────────────────────────────────────────────
+// A player can be at a city (dotPos=null, loc=cityKey)
+// OR between cities (loc=null, dotPos={from,to,step,type})
+// where step=1 means 1 dot along from 'from' toward 'to'
+// and step=edgeSteps means arrived at 'to' (will be normalised to city)
+
+// Get the board x,y of a dot position
+function dotPosXY(dp){
+  const a=CITIES[dp.from], b=CITIES[dp.to];
+  if(!a||!b) return {x:0,y:0};
+  const t = dp.step / _getEdgeSteps(dp.from,dp.to);
+  return {x: a.x+(b.x-a.x)*t, y: a.y+(b.y-a.y)*t};
+}
+
+// Normalise: if dotPos.step >= edge length, snap to city
+
+// Get the board x,y of the current player position (city or dot)
+function playerXY(p){
+  if(p.dotPos) return dotPosXY(p.dotPos);
+  const c = CITIES[p.loc];
+  return c ? {x:c.x, y:c.y} : {x:0,y:0};
+}
 
 // Token pool (30 total = 30 non-start cities)
 const TOKEN_POOL=[
@@ -1034,6 +1116,94 @@ let _busy=false;       // prevents double actions
 let _modalCbs=[];      // modal button callbacks
 let _legendOn=false;
 let _inGame=false;     // tracks whether game overlays should show
+
+/* ── CAMERA / ZOOM ───────────────────────────────────────────── */
+// _cam: {tx, ty, scale} — transform applied when drawing the board
+// tx/ty = pan offset in canvas pixels, scale = zoom multiplier
+let _cam = {tx:0, ty:0, scale:1};
+let _camTarget = {tx:0, ty:0, scale:1};
+let _camAnimId = null;
+let _camZoomed = false;
+
+/* ── PULSE LOOP (move phase only) ────────────────────────────── */
+
+function _startPulseLoop(){ }
+function _stopPulseLoop(){ }
+let _stepPath   = null;   // non-null while animating (signals drawBoard to use step draw)
+let _stepAnimId = null;   // rAF handle for pawn lerp
+let _stepPlayer = null;   // player currently being animated
+
+function _camAnimate(){
+  // Don't animate if user has manual zoom — they own the camera
+  if(_manualZoom){ _camAnimId=null; return; }
+  const spd = 0.12;
+  let dx = _camTarget.tx - _cam.tx;
+  let dy = _camTarget.ty - _cam.ty;
+  let ds = _camTarget.scale - _cam.scale;
+  const done = Math.abs(dx)<0.15 && Math.abs(dy)<0.15 && Math.abs(ds)<0.002;
+  if(done){
+    _cam.tx = _camTarget.tx;
+    _cam.ty = _camTarget.ty;
+    _cam.scale = _camTarget.scale;
+    _camAnimId = null;
+  } else {
+    _cam.tx += dx * spd * 1.8;
+    _cam.ty += dy * spd * 1.8;
+    _cam.scale += ds * spd * 1.8;
+    _camAnimId = requestAnimationFrame(_camAnimate);
+  }
+  if(G) drawBoard();
+}
+
+function _startCamAnim(){
+  if(_camAnimId) cancelAnimationFrame(_camAnimId);
+  _camAnimId = requestAnimationFrame(_camAnimate);
+}
+
+function zoomToMovePhase(){
+  if(!G) return;
+  // Don't auto-zoom if user has manually set their own zoom
+  if(_manualZoom) return;
+  const p = curP();
+  const pos = playerXY(p);
+  const pts = [{x:pos.x, y:pos.y}];
+  (G.opts||[]).forEach(o => pts.push({x:o.x, y:o.y}));
+  if(pts.length === 0) return;
+  let minX = pts[0].x, maxX = pts[0].x, minY = pts[0].y, maxY = pts[0].y;
+  pts.forEach(p => { minX=Math.min(minX,p.x); maxX=Math.max(maxX,p.x); minY=Math.min(minY,p.y); maxY=Math.max(maxY,p.y); });
+
+  const padX = Math.max(0.10, (maxX - minX) * 0.35);
+  const padY = Math.max(0.10, (maxY - minY) * 0.35);
+  minX = Math.max(0, minX - padX);
+  maxX = Math.min(1, maxX + padX);
+  minY = Math.max(0, minY - padY);
+  maxY = Math.min(1, maxY + padY);
+
+  const regionW = (maxX - minX) * BW;
+  const regionH = (maxY - minY) * BH;
+  const fitScale = Math.min((BW * 0.92) / regionW, (BH * 0.92) / regionH, 1.4);
+
+  const midX = (minX + maxX) / 2 * BW;
+  const midY = (minY + maxY) / 2 * BH;
+
+  _camTarget.scale = fitScale;
+  _camTarget.tx = BW/2 - midX * fitScale;
+  _camTarget.ty = BH/2 - midY * fitScale;
+  _camZoomed = true;
+  _startCamAnim();
+}
+
+function zoomOut(){
+  _stopPulseLoop();
+  _camZoomed = false;
+  if(!_manualZoom){
+    // Only reset camera if user hasn't taken manual control
+    _camTarget.tx = 0;
+    _camTarget.ty = 0;
+    _camTarget.scale = 1;
+    _startCamAnim();
+  }
+}
 
 /* ═══════════════════════════════════════════════════════════════
    SOUND ENGINE — Web Audio API, zero external files
@@ -1429,6 +1599,10 @@ window.addEventListener("load",()=>{
     // Stop AI timer
     if(_aiT){ clearTimeout(_aiT); _aiT=null; }
 
+    // Stop any pawn step animation cleanly
+    if(_stepAnimId){ cancelAnimationFrame(_stepAnimId); _stepAnimId=null; }
+    _stepPath=null; _stepPlayer=null;
+
     // Stop gem animation loop
     if(_gemLoopId){ cancelAnimationFrame(_gemLoopId); _gemLoopId=null; }
 
@@ -1474,11 +1648,12 @@ window.addEventListener("load",()=>{
     // Restart gem loop if there were revealed gems
     if(G && ps.gemLoopId) _startGemLoop();
 
-    // Resume AI turn — re-trigger if it was the AI's turn
-    if(G && !_busy && curP && curP().type==="ai" && G.phase==="roll"){
-      _aiT=setTimeout(()=>aiPlay(curP()), 600);
+    // Resume AI turn — re-trigger if AI turn is in progress or pending
+    if(G && curP && curP().type==="ai" && G.phase==="roll"){
+      // Reset busy so AI can roll fresh
+      _busy=false;
+      _aiT=setTimeout(()=>aiPlay(curP()), 800);
     }
-    // If AI was mid-think (modal open), autoGo will handle it when modal closes
 
     // Redraw board to restore visual state
     if(G) { drawBoard(); renderHUD(); }
@@ -1560,14 +1735,8 @@ window.addEventListener("load",()=>{
   $("ab-pass").addEventListener("click",()=>{SFX.uiTap();HX.tap();doPass();});
   $("ab-go").addEventListener("click",doGo);
 
-  // Canvas clicks
-  canvas.addEventListener("click",onCanvasClick);
-  canvas.addEventListener("touchend",e=>{
-    e.preventDefault();
-    const t=e.changedTouches[0];
-    const r=canvas.getBoundingClientRect();
-    onCanvasClick({clientX:t.clientX,clientY:t.clientY,_r:r});
-  },{passive:false});
+  // Canvas interaction — pinch zoom, pan, and tap
+  _initCanvasGestures();
 
   window.addEventListener("resize",onResize);
   window.addEventListener("orientationchange",()=>setTimeout(onResize,350));
@@ -1762,13 +1931,18 @@ const HX = {
 
 // Continuous redraw when revealed gems are on the board (for rotation animation)
 let _gemLoopId=null;
+let _gemLastDraw=0;
 function _startGemLoop(){
   if(_gemLoopId)return;
-  function tick(){
+  function tick(ts){
     if(!G){_gemLoopId=null;return;}
     const hasRevealedGems=Object.values(G.toks).some(t=>t.rev&&["ruby","emerald","topaz","diamond"].includes(t.t));
     if(!hasRevealedGems){_gemLoopId=null;return;}
-    drawBoard();
+    // Only redraw at ~10fps — gems rotate slowly, no need for 60fps
+    if(ts - _gemLastDraw > 100){
+      _gemLastDraw = ts;
+      if(!_stepPath && !_camAnimId) drawBoard(); // don't fight other draw loops
+    }
     _gemLoopId=requestAnimationFrame(tick);
   }
   _gemLoopId=requestAnimationFrame(tick);
@@ -1816,9 +1990,9 @@ function onResize(){
   if(!wrap)return;
   const W=wrap.clientWidth;
   const H=wrap.clientHeight;
-  SC=Math.min(W/700,H/700,2.2);
+  SC=Math.min(W/700,H/760,2.2);
   BW=Math.round(700*SC);
-  BH=Math.round(700*SC);
+  BH=Math.round(760*SC);
   canvas.width=BW;canvas.height=BH;
   canvas.style.width=BW+"px";canvas.style.height=BH+"px";
 
@@ -1940,7 +2114,7 @@ function replayGame(){
 }
 
 function launchGame(players){
-  clearTimeout(_aiT);
+  clearTimeout(_aiT); _aiT=null;
   _busy=false;pendingMove=null;_modalCbs=[];
 
   // Tokens
@@ -1956,7 +2130,9 @@ function launchGame(players){
   G={
     players:players.map((p,idx)=>({
       ...p,
-      loc:idx%2===0?"cairo":"tangier",
+      loc: START_CITIES[idx % START_CITIES.length],
+      dotPos:null,
+      _tokSafe:null,
       money:300,holding:null,stuck:false,skipNext:false,
     })),
     cur:0,
@@ -1976,6 +2152,16 @@ function launchGame(players){
   closeModal();
   hideAction();
   $("ai-think").classList.remove("on");
+  // Reset camera and manual zoom fully
+  _cam={tx:0,ty:0,scale:1};
+  _camTarget={tx:0,ty:0,scale:1};
+  _camZoomed=false;
+  _resetManualZoom();
+  if(_camAnimId){cancelAnimationFrame(_camAnimId);_camAnimId=null;}
+  // Reset step animation
+  if(_stepAnimId){cancelAnimationFrame(_stepAnimId);_stepAnimId=null;}
+  _stopPulseLoop();
+  _stepPath=null;_stepPlayer=null;
 
   goScreen("sGame");  // this calls setGameUI(true) which shows all overlays
   SFX.gameStart();
@@ -1986,14 +2172,22 @@ function launchGame(players){
 /* ── TURN MACHINE ────────────────────────────────────────────── */
 function curP(){return G.players[G.cur];}
 
+// Start cities spread evenly for up to 6 players
+const START_CITIES = ["cairo","tangier","tunis","ashanti","khartoum","lagos"];
+
 function beginTurn(){
   _busy=false;
   pendingMove=null;
   G.phase="roll";
   G.opts=[];
   G.sel=null;
+  _stopPulseLoop();
+  if(_stepAnimId){cancelAnimationFrame(_stepAnimId);_stepAnimId=null;}
+  if(_aiT){clearTimeout(_aiT);_aiT=null;}
+  _stepPath=null; _stepPlayer=null;
+  zoomOut();
   hideAction();
-  drawBoard();
+  scheduleDraw();
   renderHUD();
 
   const p=curP();
@@ -2009,6 +2203,11 @@ function beginTurn(){
 }
 
 function nextTurn(){
+  if(_aiT){clearTimeout(_aiT);_aiT=null;}
+  // Cancel any running step animation cleanly
+  if(_stepAnimId){cancelAnimationFrame(_stepAnimId);_stepAnimId=null;}
+  _stepPath=null;_stepPlayer=null;
+  zoomOut();
   closeModal();
   hideAction();
   _busy=false;
@@ -2038,12 +2237,22 @@ function nextTurn(){
 function humanRoll(){
   if(!G||G.phase!=="roll"||_busy)return;
   const p=curP();
-  if(p.type==="ai")return;
+  if(p.type==="ai"){showToast("Wait for AI turn…");return;}
   _busy=true;
   HX.roll();
-  if(p.stuck){rollStuck(p,done=>{_busy=false;if(done)doRollResult(done);else nextTurn();});return;}
+  if(p.stuck){
+    rollStuck(p,escaped=>{
+      if(escaped){
+        showToast(p.name+" escaped! Rolling for movement…");
+        setTimeout(()=>animRoll(v=>{ doRollResult(v); }),700); // _busy stays true
+      } else {
+        _busy=false;nextTurn();
+      }
+    });
+    return;
+  }
   if(p.skipNext){p.skipNext=false;_busy=false;showToast(p.name+" skips their turn!");setTimeout(nextTurn,700);return;}
-  animRoll(v=>{_busy=false;doRollResult(v);});
+  animRoll(v=>{ doRollResult(v); }); // _busy stays true until move confirmed
 }
 
 function animRoll(cb){
@@ -2066,176 +2275,463 @@ function animRoll(cb){
   },62);
 }
 
+// rollStuck: returns escaped=true/false via cb. Does NOT roll for movement.
 function rollStuck(p,cb){
   animRoll(v=>{
-    if(v<=2){p.stuck=false;showToast(p.name+" escaped! (rolled "+v+")");cb(v);}
-    else{showToast(p.name+" still stuck (rolled "+v+", need 1–2)");cb(null);}
+    if(v<=2){p.stuck=false;showToast(p.name+" escaped! (rolled "+v+")");cb(true);}
+    else{showToast(p.name+" still stuck (rolled "+v+", need 1–2)");cb(false);}
   });
 }
 
 function doRollResult(v){
   const p=curP();
-  G.opts=reachable(p.loc,v,p.money);
+  G.opts=reachable(p,v);
   G.sel=null;pendingMove=null;
   if(G.opts.length===0){showToast(p.name+" can't move!");setTimeout(nextTurn,900);return;}
   G.phase="move";
+  // Human needs _busy=false so they can tap dots/cities; AI keeps it true
+  if(p.type!=="ai") _busy=false;
   showAction("move");
   drawBoard();
+  _startPulseLoop();
+  setTimeout(()=>zoomToMovePhase(), 150);
 }
 
 /* ── MOVEMENT ────────────────────────────────────────────────── */
-function reachable(from,steps,money){
-  // BFS: find all cities reachable within UP TO 'steps' steps.
-  // Player may stop early at any city along the route — matching board game rules.
-  const res=new Map(); // city -> {cost, type}
-  const queue=[{c:from,rem:steps,cost:0,seaUsed:false,airUsed:false,path:new Set([from])}];
+function _getEdgeSteps(from, to){
+  const adj = ADJ[from];
+  if(!adj) return 1;
+  for(const e of adj.land){ if(e.to===to) return e.steps; }
+  for(const e of adj.sea){  if(e.to===to) return e.steps; }
+  for(const e of adj.air){  if(e.to===to) return e.steps; }
+  return 1;
+}
 
-  while(queue.length){
-    const {c,rem,cost,seaUsed,airUsed,path}=queue.shift();
+function _getEdgeType(from, to){
+  const adj = ADJ[from];
+  if(!adj) return 'land';
+  for(const e of adj.land){ if(e.to===to) return 'land'; }
+  for(const e of adj.sea){  if(e.to===to) return 'sea'; }
+  for(const e of adj.air){  if(e.to===to) return 'air'; }
+  return 'land';
+}
 
-    if(c!==from){
-      if(!res.has(c)||res.get(c).cost>cost)res.set(c,{cost,type:"land"});
+// Returns array of reachable positions:
+//   city destinations: {type:'city', city, cost, routeType, path}
+//   dot positions:     {type:'dot',  from, to, step, cost, routeType, path}
+//
+// A player starting mid-route (p.dotPos set) can only continue along
+// that same route in the same direction OR stop on a dot along it.
+// Once they reach the far city they can branch out.
+
+function reachable(p, diceRoll){
+  const money = p.money;
+  const results = [];
+  const cityKeys = new Set();
+  const dotKeys  = new Set(); // canonical keys only
+
+  if(p.dotPos){
+    const dp = p.dotPos;
+    const edgeLen = _getEdgeSteps(dp.from, dp.to);
+    const routeType = dp.type || _getEdgeType(dp.from, dp.to);
+    const [ca, cb] = dp.from < dp.to ? [dp.from, dp.to] : [dp.to, dp.from];
+
+    // Build base path starting with a sentinel so _buildAnimPath
+    // correctly skips index 0 (the player's current dot position)
+    const basePath = [{dotPos:{from:dp.from, to:dp.to, step:dp.step, type:routeType}}];
+
+    for(let s=1; s<=diceRoll; s++){
+      const newStep = dp.step + s;
+      if(newStep < edgeLen){
+        const canonStep = dp.from < dp.to ? newStep : edgeLen - newStep;
+        const canonKey = `${ca}|${cb}|${canonStep}`;
+        if(!dotKeys.has(canonKey)){
+          dotKeys.add(canonKey);
+          const xy = dotPosXY({from:dp.from, to:dp.to, step:newStep});
+          results.push({type:'dot', from:dp.from, to:dp.to, step:newStep,
+            canonKey, cost:0, routeType,
+            path:[...basePath, {dotPos:{from:dp.from, to:dp.to, step:newStep, type:routeType}}],
+            x:xy.x, y:xy.y});
+        }
+      } else {
+        const stepsUsed = edgeLen - dp.step;
+        if(stepsUsed <= diceRoll){
+          const remSteps = diceRoll - stepsUsed;
+          if(!cityKeys.has(dp.to)){
+            cityKeys.add(dp.to);
+            results.push({type:'city', city:dp.to, cost:0, routeType,
+              path:[...basePath, dp.to],
+              x:CITIES[dp.to]?.x, y:CITIES[dp.to]?.y});
+          }
+          if(remSteps > 0){
+            // Only block dp.to (current city) to prevent immediate U-turn within same roll
+            // dp.from is a previous-turn position - player is allowed to go back there
+            _bfsFromCity(dp.to, remSteps, money, false, false, [dp.to],
+              results, cityKeys, dotKeys, 0);
+          }
+        }
+        break;
+      }
     }
-    if(rem===0)continue;
-
-    const adj=ADJ[c]||{land:[],sea:[],air:[]};
-
-    // Land (free, 1 step)
-    adj.land.forEach(nb=>{
-      if(path.has(nb))return;
-      const np=new Set(path);np.add(nb);
-      queue.push({c:nb,rem:rem-1,cost,seaUsed,airUsed,path:np});
-    });
-
-    // Sea (£100, 1 step — only one sea voyage per turn)
-    if(!airUsed&&!seaUsed&&money>0&&money>=cost+100){
-      adj.sea.forEach(nb=>{
-        if(path.has(nb))return;
-        const np=new Set(path);np.add(nb);
-        queue.push({c:nb,rem:rem-1,cost:cost+100,seaUsed:true,airUsed,path:np});
-      });
-    }else if(!airUsed&&money===0&&!seaUsed){
-      // Broke: free sea, 2 steps max
-      adj.sea.forEach(nb=>{
-        if(path.has(nb))return;
-        const np=new Set(path);np.add(nb);
-        queue.push({c:nb,rem:Math.min(rem-1,1),cost:0,seaUsed:true,airUsed,path:np});
-      });
-    }
-
-    // Air (£500, one-shot to any directly connected air city)
-    if(!airUsed&&money>=cost+500){
-      adj.air.forEach(nb=>{
-        if(!res.has(nb)||res.get(nb).cost>cost+500)res.set(nb,{cost:cost+500,type:"air"});
-      });
-    }
+    return results;
   }
 
-  return [...res.entries()].map(([city,{cost,type}])=>({city,cost,type}));
+  // Player is at a city — BFS from there
+  _bfsFromCity(p.loc, diceRoll, money, false, false, [p.loc],
+    results, cityKeys, dotKeys, 0);
+  return results;
+}
+
+function _bfsFromCity(fromCity, rem, money, seaUsed, airUsed, pathSoFar,
+                      results, cityKeys, dotKeys, costSoFar){
+  if(rem <= 0 || !fromCity) return;
+  const adj = ADJ[fromCity] || {land:[], sea:[], air:[]};
+  const pathSet = new Set(pathSoFar); // O(1) lookups
+
+  // Land routes
+  adj.land.forEach(edge=>{
+    if(pathSet.has(edge.to)) return;
+    _walkRoute(fromCity, edge.to, edge.steps, 'land', rem, money,
+      seaUsed, airUsed, pathSoFar, pathSet, results, cityKeys, dotKeys, costSoFar);
+  });
+
+  // Sea routes
+  if(!seaUsed && !airUsed){
+    adj.sea.forEach(edge=>{
+      if(pathSet.has(edge.to)) return;
+      const netMoney = money - costSoFar;
+      if(netMoney >= 100){
+        _walkRoute(fromCity, edge.to, edge.steps, 'sea', rem, money,
+          true, airUsed, pathSoFar, pathSet, results, cityKeys, dotKeys, costSoFar + 100);
+      } else {
+        _walkRoute(fromCity, edge.to, edge.steps, 'sea', rem, money,
+          true, airUsed, pathSoFar, pathSet, results, cityKeys, dotKeys, costSoFar, 2);
+      }
+    });
+  }
+
+  // Air routes — instant, no step cost, only once
+  if(!airUsed && !seaUsed && money - costSoFar >= 500){
+    adj.air.forEach(edge=>{
+      if(!cityKeys.has(edge.to) && !pathSet.has(edge.to)){
+        cityKeys.add(edge.to);
+        results.push({type:'city', city:edge.to, cost:costSoFar+500, routeType:'air',
+          path:[...pathSoFar, edge.to], x:CITIES[edge.to]?.x, y:CITIES[edge.to]?.y});
+      }
+    });
+  }
+}
+
+function _walkRoute(fromCity, toCity, edgeSteps, routeType, rem, money,
+                    seaUsed, airUsed, pathSoFar, pathSet, results, cityKeys, dotKeys, costSoFar, maxSteps){
+  // pathSet is a Set of pathSoFar for O(1) lookup
+  if(!pathSet) pathSet = new Set(pathSoFar);
+  if(pathSet.has(fromCity) && pathSoFar[pathSoFar.length-1] !== fromCity) return;
+
+  const [ca, cb] = fromCity < toCity ? [fromCity, toCity] : [toCity, fromCity];
+  // maxSteps caps how far we travel without changing what 'arrival' means
+  const limit = Math.min(rem, maxSteps !== undefined ? maxSteps : edgeSteps);
+
+  for(let s=1; s<=limit; s++){
+    if(s < edgeSteps){
+      const canonStep = fromCity < toCity ? s : edgeSteps - s;
+      const key = `${ca}|${cb}|${canonStep}`;
+      if(!dotKeys.has(key)){
+        dotKeys.add(key);
+        const xy = dotPosXY({from:fromCity, to:toCity, step:s});
+        results.push({type:'dot', from:fromCity, to:toCity, step:s,
+          canonKey:key, cost:costSoFar, routeType,
+          path:[...pathSoFar, {dotPos:{from:fromCity,to:toCity,step:s,type:routeType}}],
+          x:xy.x, y:xy.y});
+      }
+    } else {
+      // s === edgeSteps: arrived at far city
+      if(!pathSet.has(toCity)){
+        if(!cityKeys.has(toCity)){
+          cityKeys.add(toCity);
+          results.push({type:'city', city:toCity, cost:costSoFar, routeType,
+            path:[...pathSoFar, toCity], x:CITIES[toCity]?.x, y:CITIES[toCity]?.y});
+        }
+        const remAfter = rem - edgeSteps;
+        if(remAfter > 0){
+          _bfsFromCity(toCity, remAfter, money, seaUsed, airUsed,
+            [...pathSoFar, toCity], results, cityKeys, dotKeys, costSoFar);
+        }
+      }
+    }
+  }
 }
 
 function onCanvasClick(e){
-  if(!G||G.phase!=="move"||_busy)return;
+  if(!G||G.phase!=="move")return;
   const r=e._r||canvas.getBoundingClientRect();
-  const mx=e.clientX-r.left, my=e.clientY-r.top;
-  let best=null,bestD=9999;
+  const sx=e.clientX-r.left, sy=e.clientY-r.top;
+  const mx=(sx - _cam.tx) / _cam.scale;
+  const my=(sy - _cam.ty) / _cam.scale;
+  const hitR = dS(30) / _cam.scale;
+  let best=null, bestD=9999;
   G.opts.forEach(opt=>{
-    const c=CITIES[opt.city];if(!c)return;
-    const dx=mx-cX(c.x),dy=my-cY(c.y);
+    const dx=mx-cX(opt.x), dy=my-cY(opt.y);
     const d=Math.sqrt(dx*dx+dy*dy);
-    if(d<dS(30)&&d<bestD){bestD=d;best=opt;}
+    if(d<hitR&&d<bestD){bestD=d;best=opt;}
   });
-  if(best){SFX.uiTap();pendingMove=best;G.sel=best.city;showAction("move");drawBoard();}
+  if(best){
+    SFX.uiTap();
+    pendingMove=best;
+    G.sel = best.type==='city' ? best.city : (best.canonKey || `${best.from}|${best.to}|${best.step}`);
+    showAction("move");
+    scheduleDraw();
+  }
 }
 
+const STEP_MS_PER_DOT = 180;
+
 function doGo(){
-  if(!G||!pendingMove||_busy)return;
+  if(!G||!pendingMove)return;
   _busy=true;
   HX.move();
+  zoomOut();
   const p=curP();
   const opt=pendingMove;
-  p.money=Math.max(0,p.money-opt.cost);
-  p.loc=opt.city;
+
   G.opts=[];G.sel=null;pendingMove=null;
-  hideAction();drawBoard();renderHUD();
+  hideAction();
+
+  p.money=Math.max(0,p.money-opt.cost);
+  renderHUD();
+
+  // Capture start position BEFORE updating p.loc/p.dotPos
+  const fromXY = playerXY(p);
+
+  // Update player position to destination
+  if(opt.type==='dot'){
+    p.loc = null;
+    p.dotPos = {from:opt.from, to:opt.to, step:opt.step, type:opt.routeType};
+  } else {
+    p.dotPos = null;
+    p.loc = opt.city;
+  }
+
+  // Build waypoints starting from captured origin
+  const animWaypoints = _buildAnimPath(fromXY, opt);
+
   SFX.pawnMove();
+  _animateWaypoints(p, animWaypoints, fromXY, ()=>{
+    drawBoard();
+    _finishMove(p, opt);
+  });
+}
 
-  const city=CITIES[opt.city];
+// Build animation waypoints from fromXY through each intermediate step to destination
+function _buildAnimPath(fromXY, opt){
+  const points = [];
+  const pathArr = opt.path || [];
 
-  // Win?
-  if(city.start&&(p.holding==="diamond"||(p.holding==="horse"&&G.diamondFound))){
+  // pathArr is [startCity, ...intermediates, destCity|{dotPos}]
+  // Skip index 0 (start city = fromXY already), add each subsequent position
+  for(let i=1; i<pathArr.length; i++){
+    const item = pathArr[i];
+    if(typeof item === 'string'){
+      const c = CITIES[item];
+      if(c) points.push({x:c.x, y:c.y});
+    } else if(item && item.dotPos){
+      points.push(dotPosXY(item.dotPos));
+    }
+  }
+
+  // Fallback: if path gave us nothing, go straight to destination
+  if(points.length === 0){
+    if(opt.type==='dot') points.push(dotPosXY({from:opt.from, to:opt.to, step:opt.step}));
+    else if(opt.city && CITIES[opt.city]) points.push({x:CITIES[opt.city].x, y:CITIES[opt.city].y});
+  }
+
+  return points;
+}
+
+function _animateWaypoints(p, waypoints, fromXY, onDone){
+  if(!waypoints || waypoints.length === 0){ onDone(); return; }
+  let wi = 0;
+  let curFrom = fromXY;
+
+  p._animXY = {...fromXY};
+  _stepPlayer = p;
+  _stepPath = ['_anim'];
+
+  function nextWaypoint(){
+    // Cancelled if nextTurn cleared _stepPath externally
+    if(_stepPath === null){ p._animXY=null; return; }
+    if(wi >= waypoints.length){
+      p._animXY = null;
+      _stepPlayer = null;
+      _stepPath = null;
+      onDone();
+      return;
+    }
+    const toXY = waypoints[wi];
+    const dist = Math.sqrt((toXY.x-curFrom.x)**2 + (toXY.y-curFrom.y)**2);
+    const duration = Math.max(120, dist * BW * 1.2);
+    const startTime = performance.now();
+
+    if(_stepAnimId) cancelAnimationFrame(_stepAnimId);
+    function tick(now){
+      if(_stepPath === null){ p._animXY=null; return; } // cancelled
+      const t01 = Math.min(1, (now-startTime)/duration);
+      const t = t01<0.5 ? 2*t01*t01 : -1+(4-2*t01)*t01;
+      p._animXY = {x: curFrom.x+(toXY.x-curFrom.x)*t, y: curFrom.y+(toXY.y-curFrom.y)*t};
+      drawBoardWithStepPawn();
+      if(t01<1){
+        _stepAnimId = requestAnimationFrame(tick);
+      } else {
+        _stepAnimId = null;
+        curFrom = toXY;
+        wi++;
+        if(wi < waypoints.length) SFX.pawnMove();
+        setTimeout(nextWaypoint, wi < waypoints.length ? 60 : 0);
+      }
+    }
+    _stepAnimId = requestAnimationFrame(tick);
+  }
+  nextWaypoint();
+}
+
+function drawBoardWithStepPawn(){
+  if(!ctx||!G||!canvas||canvas.width===0)return;
+  ctx.clearRect(0,0,BW,BH);
+  ctx.save();
+  ctx.setTransform(_cam.scale, 0, 0, _cam.scale, _cam.tx, _cam.ty);
+  drawBg();
+  drawRoutes();
+  drawCities();
+  drawTokens();
+  _drawPawnsWithStep();
+  ctx.restore();
+}
+
+function _drawPawnsWithStep(){
+  G.players.forEach((p,i)=>{
+    if(p === _stepPlayer && _stepPath) return; // drawn separately below
+    const xy = playerXY(p);
+    drawPawn(cX(xy.x), cY(xy.y)-dS(18), p.color, G.cur===i, p.holding);
+  });
+  // Draw the animated pawn
+  if(_stepPlayer && _stepPath && _stepPlayer._animXY){
+    const ax = _stepPlayer._animXY.x;
+    const ay = _stepPlayer._animXY.y;
+    drawPawn(cX(ax), cY(ay)-dS(18), _stepPlayer.color, true, _stepPlayer.holding);
+  }
+}
+
+function _finishMove(p, opt){
+  // Player must be at a city (not dotPos) for win/token checks
+  const city = p.loc ? CITIES[p.loc] : null;
+
+  // Win check — only at a start city
+  if(city && city.start && (p.holding==="diamond"||(p.holding==="horse"&&G.diamondFound))){
     setTimeout(()=>{_busy=false;doWin(p);},300);return;
   }
 
   // Cape Town bonus
-  if(opt.city==="capetown"&&G.capeBonus){
+  if(p.loc==="capetown"&&G.capeBonus){
     G.capeBonus=false;p.money+=5000;renderHUD();
-    const capeCb=()=>{closeModal();_busy=false;afterLand(p,opt.city);};
+    const capeCb=()=>{
+      if(!G||curP()!==p){return;} // guard: game may have changed
+      closeModal();_busy=false;afterLand(p,p.loc);
+    };
     showModal("⭐","Cape Town Bonus!","You're the FIRST to reach Cape Town!\nCollect £5,000!",[
       {l:"Collect! 🎉",cls:"mbtn2-ok",fn:capeCb}
     ]);
-    if(p.type==="ai")setTimeout(capeCb,1400);
+    if(p.type==="ai")_aiT=setTimeout(capeCb,1400);
     return;
   }
 
-  // Hazard
-  if((city.special==="sahara"||city.special==="pirates")&&Math.random()<0.35){
+  // Hazard — Sahara or Pirates
+  if(city&&(city.special==="sahara"||city.special==="pirates")&&Math.random()<0.35){
     p.stuck=true;
     SFX.hazard();
     showToast("⚠️ "+p.name+" is stuck! Need 1–2 to escape.");
   }
 
   _busy=false;
-  afterLand(p,opt.city);
+  if(p.loc) afterLand(p, p.loc);
+  else nextTurn(); // landed on a dot — no token, just end turn
 }
 
 function afterLand(p,city){
   const tok=G.toks[city];
   if(tok&&!tok.rev){
     G.phase="token";
-    showAction("token");
-    // Safety: if token phase is never resolved, auto-pass after 45s
+    // Only show the token action bar for human players
+    if(p.type!=="ai") showAction("token");
+    // Safety timeout
     if(p._tokSafe)clearTimeout(p._tokSafe);
     p._tokSafe=setTimeout(()=>{
       if(G&&G.phase==="token"&&curP()===p){p._tokSafe=null;_busy=false;nextTurn();}
-    },45000);
-    // AI makes its token decision after a short visible pause
+    },12000);
+    // AI makes its token decision automatically
     if(p.type==="ai"){
       _aiT=setTimeout(()=>{
         if(!G||G.phase!=="token"||curP()!==p)return;
         const diff=_aiDiff||'medium';
-        if(diff==='easy')doTryRoll();
-        else if(p.money>=100)doBuy();
-        else doTryRoll();
+        if(diff==='easy') _aiDoTryRoll(p);
+        else if(p.money>=100) _aiDoBuy(p);
+        else _aiDoTryRoll(p);
       },_aiDiff==='hard'?500:800);
     }
   }else{nextTurn();}
 }
 
-/* ── TOKEN ACTIONS ───────────────────────────────────────────── */
+// Internal AI token actions that bypass _busy check
+function _aiDoBuy(p){
+  if(!G||!p.loc)return;
+  const tok=G.toks[p.loc];
+  if(!tok||tok.rev){nextTurn();return;}
+  if(p._tokSafe){clearTimeout(p._tokSafe);p._tokSafe=null;}
+  _busy=true;
+  p.money-=100;renderHUD();hideAction();
+  revealTok(p,p.loc);
+}
+
+function _aiDoTryRoll(p){
+  if(!G||!p.loc)return;
+  const tok=G.toks[p.loc];
+  if(!tok||tok.rev){nextTurn();return;}
+  if(p._tokSafe){clearTimeout(p._tokSafe);p._tokSafe=null;}
+  _busy=true;
+  hideAction();
+  animRoll(v=>{
+    if(v>=4){showToast("Rolled "+v+" — token flipped!");revealTok(p,p.loc);}
+    else{showToast("Rolled "+v+" — need 4, 5 or 6. Missed!");_busy=false;nextTurn();}
+  });
+}
+
+/* ── TOKEN ACTIONS (human players only) ──────────────────────── */
 function doBuy(){
-  if(!G||_busy)return;
+  if(!G||_busy||curP().type==="ai")return;
   const p=curP();
   if(p.money<100){showToast("Not enough money!");return;}
   const tok=G.toks[p.loc];
   if(!tok||tok.rev){showToast("No token here!");return;}
+  if(p._tokSafe){clearTimeout(p._tokSafe);p._tokSafe=null;}
   _busy=true;
   p.money-=100;renderHUD();hideAction();
   revealTok(p,p.loc);
 }
 
 function doTryRoll(){
-  if(!G||_busy)return;
-  _busy=true;hideAction();
+  if(!G||_busy||curP().type==="ai")return;
+  _busy=true;
+  const p=curP();
+  const city=p.loc;
+  if(p._tokSafe){clearTimeout(p._tokSafe);p._tokSafe=null;}
+  hideAction();
   animRoll(v=>{
-    if(v>=4){showToast("Rolled "+v+" — token flipped!");revealTok(curP(),curP().loc);}
+    if(v>=4){showToast("Rolled "+v+" — token flipped!");revealTok(p,city);}
     else{showToast("Rolled "+v+" — need 4, 5 or 6. Missed!");_busy=false;nextTurn();}
   });
 }
 
 function doPass(){
-  if(!G||_busy)return;
-  _busy=true;
+  if(!G||_busy||curP().type==="ai")return;
   const p=curP();
   if(p&&p._tokSafe){clearTimeout(p._tokSafe);p._tokSafe=null;}
   hideAction();nextTurn();
@@ -2244,17 +2740,26 @@ function doPass(){
 function revealTok(p,city){
   const tok=G.toks[city];
   if(!tok||tok.rev){_busy=false;nextTurn();return;}
-  tok.rev=true;drawBoard();
+  tok.rev=true;scheduleDraw();
   HX.flip();
   SFX.tokenFlip();
   if(p._tokSafe){clearTimeout(p._tokSafe);p._tokSafe=null;}
+  // Re-arm safety for human players so modal can't block forever
+  if(p.type==="human"){
+    p._tokSafe=setTimeout(()=>{
+      if(G&&G.phase==="token"&&curP()===p){p._tokSafe=null;_busy=false;nextTurn();}
+    },20000);
+  }
   processTok(p,tok,city);
 }
 
 function processTok(p,tok,city){
   const isGold=CITIES[city]?.special==="gold_coast";
   const isSlave=CITIES[city]?.special==="slave_coast";
-  const go=()=>{closeModal();_busy=false;drawBoard();nextTurn();};
+  const go=()=>{
+    if(!G||!$("sGame")||$("sGame").classList.contains("off"))return; // game no longer active
+    closeModal();_busy=false;drawBoard();nextTurn();
+  };
   // AI players auto-dismiss modals after a readable pause
   const aiDelay=p.type==="ai"?1600:0;
   const autoGo=delay=>{ if(p.type==="ai") _aiT=setTimeout(go,delay); };
@@ -2262,7 +2767,7 @@ function processTok(p,tok,city){
   switch(tok.t){
     case"diamond":
       G.diamondFound=true;G.diamondHolder=p;p.holding="diamond";
-      renderHUD();drawBoard();
+      renderHUD();scheduleDraw();
       HX.diamond();
       SFX.diamondFound();
       showModal("💎","THE STAR OF AFRICA!",
@@ -2293,30 +2798,35 @@ function processTok(p,tok,city){
 
     case"horse":
       if(G.diamondFound&&p!==G.diamondHolder){
-        p.holding="horse";renderHUD();drawBoard();
+        p.holding="horse";renderHUD();scheduleDraw();
         SFX.horseFound();
         showModal("horse","Horseshoe!",p.name+" found a Horseshoe!\nRace to Cairo or Tangier to steal the win!",
           [{l:"Run!",cls:"mbtn2-ok",fn:go}]);
       }else{
+        // Not useful yet — put it back face-down so others can find it
+        tok.rev=false;
         SFX.toast();
-        showModal("horse","Horseshoe","Found a Horseshoe — diamond not found yet.\nDiscarded.",
+        showModal("horse","Horseshoe","Found a Horseshoe — diamond not found yet.\nToken returned face-down.",
           [{l:"OK",cls:"mbtn2-ok",fn:go}]);
       }autoGo(aiDelay);break;
 
     case"visa":
       if(G.diamondFound&&p!==G.diamondHolder){
-        p.holding="horse";renderHUD();drawBoard();
+        p.holding="horse";renderHUD();scheduleDraw();
         SFX.horseFound();
         showModal("visa","Visa!",p.name+" found a Visa!\nRace to Cairo or Tangier to steal the win!",
           [{l:"Charge!",cls:"mbtn2-ok",fn:go}]);
       }else{
+        // Not useful yet — put it back face-down
+        tok.rev=false;
         SFX.toast();
-        showModal("visa","Visa","Visa found — only useful after diamond is found.\nDiscarded.",
+        showModal("visa","Visa","Visa found — only useful after diamond is found.\nToken returned face-down.",
           [{l:"OK",cls:"mbtn2-ok",fn:go}]);
       }autoGo(aiDelay);break;
 
     case"blank":
-      if(isSlave){p.skipNext=true;
+      if(isSlave){
+        if(!p.stuck) p.skipNext=true; // don't stack skip on top of stuck
         SFX.slaveCoast();
         showModal("blank","Blank — Slave Coast","Nothing here.\n"+p.name+" must skip their next turn!",
           [{l:"Curse it!",cls:"mbtn2-ok",fn:go}]);
@@ -2334,13 +2844,22 @@ function processTok(p,tok,city){
 }
 
 function doWin(p){
-  $("win-h1").textContent="You Win!";
-  $("win-h2").textContent=p.holding==="diamond"
-    ?"🌟 "+p.name+" secured the Star of Africa!"
-    :"🧲 "+p.name+" won with the Horseshoe!";
+  const isYou = p.type==="human" && p.name.trim().toLowerCase()==="you";
+  $("win-h1").textContent = isYou ? "You Win! 🎉" : p.name+" Wins! 🎉";
+  $("win-h2").textContent = p.holding==="diamond"
+    ? "🌟 "+p.name+" secured the Star of Africa!"
+    : "🧲 "+p.name+" won with the Horseshoe!";
   HX.win();SFX.winFanfare();
   spawnConfetti();
-  // Spin the 3D diamond on the win screen
+
+  // Record money earned above starting £300
+  const _gemTotal = Math.max(0, p.money - 300);
+  recordGame(p, G ? G.players : [], _gemTotal);
+
+  // Show win screen FIRST so the off-class is removed before animation starts
+  goScreen("sWin");
+
+  // Now start the spinning diamond
   const el=$("win-diamond");
   if(el){
     const SZ=140, DPR=window.devicePixelRatio||1;
@@ -2351,7 +2870,6 @@ function doWin(p){
     dc.scale(DPR,DPR);
     let ang=0;
     function tickWin(){
-      // Stop if win screen hidden or page hidden
       if(document.hidden || $("sWin").classList.contains("off")){
         el._animId=null; return;
       }
@@ -2362,19 +2880,6 @@ function doWin(p){
     }
     tickWin();
   }
-  // Tally gem income for this winner
-  let _gemTotal = 0;
-  if(G && G.toks){
-    Object.values(G.toks).forEach(tok=>{
-      if(tok.rev){
-        if(tok.t==='ruby')_gemTotal+=1000;
-        else if(tok.t==='emerald')_gemTotal+=600;
-        else if(tok.t==='topaz')_gemTotal+=300;
-      }
-    });
-  }
-  recordGame(p, G ? G.players : [], _gemTotal);
-  goScreen("sWin");
 }
 
 /* ── AI ENGINE ───────────────────────────────────────────────── */
@@ -2387,18 +2892,28 @@ function aiPlay(p){
     if(!G||curP()!==p){_busy=false;return;}
 
     if(p.stuck){
-      rollStuck(p,v=>{if(v)doRollResult(v);else nextTurn();});
+      _busy=true;
+      rollStuck(p,escaped=>{
+        if(escaped){
+          setTimeout(()=>animRoll(v=>{ doRollResult(v); }),700); // _busy stays true
+        } else {
+          _busy=false;nextTurn();
+        }
+      });
       return;
     }
     if(p.skipNext){p.skipNext=false;showToast(p.name+" skips!");setTimeout(nextTurn,600);return;}
 
+    _busy=true;
     animRoll(v=>{
-      const opts=reachable(p.loc,v,p.money);
+      const opts=reachable(p,v);
       G.opts=opts;
       if(opts.length===0){_busy=false;setTimeout(nextTurn,500);return;}
       const best=aiPick(p,opts);
-      pendingMove=best;G.sel=best.city;G.phase="move";
-      drawBoard();
+      pendingMove=best;
+      G.sel = best.type==='city' ? best.city : (best.canonKey||null);
+      G.phase="move";
+      scheduleDraw();
       _aiT=setTimeout(()=>{
         doGo();
       },500);
@@ -2408,52 +2923,62 @@ function aiPlay(p){
 
 function aiPick(p,opts){
   const diff=_aiDiff||'medium';
-  let best=opts[0],bs=-9e9;
 
-  opts.forEach(o=>{
-    // Base noise — Easy is very random, Hard is precise
+  // Strongly prefer city opts over dot opts (cities have tokens, win conditions)
+  const cityOpts = opts.filter(o=>o.type==='city');
+  const pool = cityOpts.length > 0 ? cityOpts : opts;
+
+  let best=pool[0],bs=-9e9;
+
+  pool.forEach(o=>{
     let s=diff==='easy'  ? Math.random()*60 :
            diff==='medium'? Math.random()*12 :
                             Math.random()*3;
 
-    const city=CITIES[o.city];
+    if(o.type==='city'){
+      const city=CITIES[o.city];
 
-    // Win move — always prioritise (all difficulties)
-    if(city?.start&&(p.holding==='diamond'||(p.holding==='horse'&&G.diamondFound)))s+=1e6;
+      // Win move — always prioritise
+      if(city?.start&&(p.holding==='diamond'||(p.holding==='horse'&&G.diamondFound)))s+=1e6;
 
-    // Token hunting — Easy ignores tokens, Medium partial, Hard seeks them
-    if(G.toks[o.city]&&!G.toks[o.city].rev){
-      if(diff==='easy')   s+=Math.random()*5;
-      if(diff==='medium') s+=25+Math.random()*10;
-      if(diff==='hard')   s+=55+Math.random()*5;
+      // Token hunting
+      if(G.toks[o.city]&&!G.toks[o.city].rev){
+        if(diff==='easy')   s+=Math.random()*5;
+        if(diff==='medium') s+=25+Math.random()*10;
+        if(diff==='hard')   s+=55+Math.random()*5;
+      }
+
+      // Cape Town bonus
+      if(o.city==='capetown'&&G.capeBonus){
+        s+=diff==='easy'?40:diff==='medium'?180:350;
+      }
+    } else {
+      // Dot: reward progress along route
+      const edgeLen = _getEdgeSteps(o.from, o.to);
+      s += (o.step / edgeLen) * (diff==='easy'?2:diff==='medium'?8:15);
     }
 
-    // Cape Town bonus
-    if(o.city==='capetown'&&G.capeBonus){
-      s+=diff==='easy'?40:diff==='medium'?180:350;
-    }
-
-    // Diamond/horse — move toward win cities
+    // Diamond/horse — move toward win cities using opt coords
     if(p.holding==='diamond'||p.holding==='horse'){
       ['cairo','tangier'].forEach(k=>{
-        const sc=CITIES[k],oc=CITIES[o.city],pc=CITIES[p.loc];
-        const closer=Math.hypot(oc.x-sc.x,oc.y-sc.y)<Math.hypot(pc.x-sc.x,pc.y-sc.y);
-        if(closer){
-          s+=diff==='easy'?5:diff==='medium'?45:120;
-        }
+        const sc=CITIES[k];
+        const pxy=playerXY(p);
+        const closer=Math.hypot(o.x-sc.x,o.y-sc.y)<Math.hypot(pxy.x-sc.x,pxy.y-sc.y);
+        if(closer) s+=diff==='easy'?5:diff==='medium'?45:120;
       });
     }
 
-    // Hard: hunt the diamond holder to steal with horse
+    // Hard: hunt diamond holder
     if(diff==='hard'&&G.diamondFound&&p.holding!=='diamond'&&p.holding!=='horse'){
       const holder=G.diamondHolder;
       if(holder&&holder!==p){
-        const hc=CITIES[holder.loc],oc=CITIES[o.city],pc=CITIES[p.loc];
-        if(Math.hypot(oc.x-hc.x,oc.y-hc.y)<Math.hypot(pc.x-hc.x,pc.y-hc.y))s+=20;
+        const hxy=playerXY(holder);
+        const pxy=playerXY(p);
+        if(Math.hypot(o.x-hxy.x,o.y-hxy.y)<Math.hypot(pxy.x-hxy.x,pxy.y-hxy.y))s+=20;
       }
     }
 
-    // Cost avoidance — Easy ignores cost, Hard manages money well
+    // Cost avoidance
     s-=o.cost*(diff==='easy'?0:diff==='medium'?0.04:0.08);
 
     if(s>bs){bs=s;best=o;}
@@ -2471,11 +2996,21 @@ function showAction(mode){
 
   if(mode==="move"){
     if(pendingMove){
-      const c=CITIES[pendingMove.city];
-      $("act-lbl").textContent="Move to "+c.n+(pendingMove.cost>0?" (£"+pendingMove.cost+")":"")+"?";
+      let lbl;
+      if(pendingMove.type==='dot'){
+        const fromN = CITIES[pendingMove.from]?.n || pendingMove.from;
+        const toN   = CITIES[pendingMove.to]?.n   || pendingMove.to;
+        const edgeLen = _getEdgeSteps(pendingMove.from, pendingMove.to);
+        lbl = `Move toward ${toN} (${pendingMove.step}/${edgeLen} steps)`;
+        if(pendingMove.cost>0) lbl += ` (£${pendingMove.cost})`;
+      } else {
+        const c=CITIES[pendingMove.city];
+        lbl = "Move to "+(c?c.n:pendingMove.city)+(pendingMove.cost>0?` (£${pendingMove.cost})`:"");
+      }
+      $("act-lbl").textContent=lbl;
       $("ab-go").style.display="";
     }else{
-      $("act-lbl").textContent="Tap a highlighted city to move (rolled "+G.dice+")";
+      $("act-lbl").textContent="Tap a dot or city to move (rolled "+G.dice+")";
     }
     if(_hideActionT){clearTimeout(_hideActionT);_hideActionT=null;}
     $("gAction").style.display="";$("gAction").classList.add("up");
@@ -2499,15 +3034,219 @@ function hideAction(){
   _hideActionT=setTimeout(()=>{$("gAction").style.display="none";_hideActionT=null;},300);
 }
 
-/* ── BOARD DRAWING ───────────────────────────────────────────── */
+/* ── CANVAS GESTURE SYSTEM ───────────────────────────────────── */
+// Handles: tap (select dot/city), pinch-to-zoom, one-finger pan
+// Manual zoom is independent of the auto-zoom-to-move-phase camera.
+
+const ZOOM_MIN = 0.8;   // can zoom out slightly beyond full board
+const ZOOM_MAX = 4.0;   // maximum pinch-in zoom
+
+// Manual offset applied on top of the auto-camera (_cam)
+// Total transform = _cam (auto) composed with _manualCam (manual)
+// But to keep it simple: manual zoom/pan overrides _cam when active
+let _manualZoom = false;  // true once user has manually panned/zoomed
+let _mZoom = 1;           // current manual zoom scale
+let _mTx   = 0;           // current manual pan x (canvas px)
+let _mTy   = 0;           // current manual pan y (canvas px)
+
+// Apply the effective camera: if user is manually zoomed, use manual values;
+// otherwise fall through to _cam (auto zoom-to-move-phase)
+function _effectiveCam(){
+  if(_manualZoom) return {scale:_mZoom, tx:_mTx, ty:_mTy};
+  return _cam;
+}
+
+// Clamp pan so board never flies completely off screen
+function _clampManual(){
+  const s = _mZoom;
+  const maxTx = BW * 0.15 * s;
+  const minTx = BW - BW * s - BW * 0.15 * s;
+  const maxTy = BH * 0.15 * s;
+  const minTy = BH - BH * s - BH * 0.15 * s;
+  _mTx = Math.max(Math.min(_mTx, maxTx), minTx);
+  _mTy = Math.max(Math.min(_mTy, maxTy), minTy);
+}
+
+function _applyManualToCam(){
+  if(_camAnimId){ cancelAnimationFrame(_camAnimId); _camAnimId=null; }
+  _cam.scale  = _mZoom;
+  _cam.tx     = _mTx;
+  _cam.ty     = _mTy;
+  _camTarget.scale = _mZoom;
+  _camTarget.tx    = _mTx;
+  _camTarget.ty    = _mTy;
+}
+
+function _resetManualZoom(){
+  _manualZoom = false;
+  _mZoom = 1; _mTx = 0; _mTy = 0;
+}
+
+function _initCanvasGestures(){
+  const ptrs = new Map(); // pointerId -> {x,y}
+
+  let _pinchDist0 = 0;
+  let _pinchZoom0 = 1;
+  let _pinchMid0  = null;
+  let _pinchTx0   = 0;
+  let _pinchTy0   = 0;
+
+  let _panPtr   = null;
+  let _panX0    = 0;
+  let _panY0    = 0;
+  let _panTx0   = 0;
+  let _panTy0   = 0;
+  let _panMoved = false;
+
+  let _tapT = 0;
+  let _tapX = 0;
+  let _tapY = 0;
+
+  const TAP_DIST = 12;
+
+  function pDist(){
+    const [a,b] = [...ptrs.values()];
+    return Math.hypot(b.x-a.x, b.y-a.y);
+  }
+  function pMid(){
+    const r = canvas.getBoundingClientRect();
+    const [a,b] = [...ptrs.values()];
+    return {x:((a.x+b.x)/2 - r.left), y:((a.y+b.y)/2 - r.top)};
+  }
+
+  canvas.addEventListener("pointerdown", e=>{
+    canvas.setPointerCapture(e.pointerId);
+    ptrs.set(e.pointerId, {x:e.clientX, y:e.clientY});
+    if(ptrs.size === 2){
+      _pinchDist0 = pDist();
+      _pinchZoom0 = _mZoom;
+      _pinchMid0  = pMid();
+      _pinchTx0   = _mTx;
+      _pinchTy0   = _mTy;
+      _panPtr = null;
+    } else if(ptrs.size === 1){
+      _panPtr   = e.pointerId;
+      _panX0    = e.clientX;
+      _panY0    = e.clientY;
+      _panTx0   = _mTx;
+      _panTy0   = _mTy;
+      _panMoved = false;
+    }
+  });
+
+  canvas.addEventListener("pointermove", e=>{
+    if(!ptrs.has(e.pointerId)) return;
+    ptrs.set(e.pointerId, {x:e.clientX, y:e.clientY});
+
+    if(ptrs.size === 2 && _pinchMid0){
+      const newDist = pDist();
+      const newMid  = pMid();
+      const scale   = newDist / (_pinchDist0 || 1);
+      const newZoom = Math.max(ZOOM_MIN, Math.min(ZOOM_MAX, _pinchZoom0 * scale));
+      _mZoom = newZoom;
+      _mTx = _pinchMid0.x - (_pinchMid0.x - _pinchTx0)*(newZoom/_pinchZoom0) + (newMid.x - _pinchMid0.x);
+      _mTy = _pinchMid0.y - (_pinchMid0.y - _pinchTy0)*(newZoom/_pinchZoom0) + (newMid.y - _pinchMid0.y);
+      _clampManual();
+      _manualZoom = true;
+      _applyManualToCam();
+      drawBoard();
+
+    } else if(ptrs.size === 1 && e.pointerId === _panPtr){
+      const dx = e.clientX - _panX0;
+      const dy = e.clientY - _panY0;
+      if(!_panMoved && Math.hypot(dx,dy) > TAP_DIST) _panMoved = true;
+      if(_panMoved && _manualZoom){
+        _mTx = _panTx0 + dx;
+        _mTy = _panTy0 + dy;
+        _clampManual();
+        _applyManualToCam();
+        drawBoard();
+      }
+    }
+  });
+
+  canvas.addEventListener("pointerup", e=>{
+    const wasSingle = ptrs.size === 1;
+    const notMoved  = !_panMoved;
+    const now = Date.now();
+    const ex  = e.clientX, ey = e.clientY;
+    ptrs.delete(e.pointerId);
+    _pinchMid0 = null;
+
+    if(wasSingle && notMoved){
+      const r  = canvas.getBoundingClientRect();
+      const cx = ex - r.left, cy = ey - r.top;
+      // Double-tap check
+      if(now - _tapT < 320 && Math.hypot(cx-_tapX, cy-_tapY) < 40){
+        _resetManualZoom();
+        if(_camAnimId){cancelAnimationFrame(_camAnimId);_camAnimId=null;}
+        _cam.tx=0;_cam.ty=0;_cam.scale=1;
+        _camTarget.tx=0;_camTarget.ty=0;_camTarget.scale=1;
+        _tapT=0;
+        drawBoard();
+        return;
+      }
+      _tapT=now; _tapX=cx; _tapY=cy;
+      onCanvasClick({clientX:ex, clientY:ey, _r:r});
+    }
+
+    // If one finger remains after pinch, restart pan from its current position
+    if(ptrs.size === 1){
+      const [id,pos] = [...ptrs.entries()][0];
+      _panPtr   = id;
+      _panX0    = pos.x;
+      _panY0    = pos.y;
+      _panTx0   = _mTx;
+      _panTy0   = _mTy;
+      _panMoved = false;
+    }
+  });
+
+  canvas.addEventListener("pointercancel", e=>{ ptrs.delete(e.pointerId); });
+
+  canvas.addEventListener("wheel", e=>{
+    e.preventDefault();
+    const r  = canvas.getBoundingClientRect();
+    const cx = e.clientX - r.left;
+    const cy = e.clientY - r.top;
+    const factor = e.deltaY > 0 ? 0.88 : 1.14;
+    const newZoom = Math.max(ZOOM_MIN, Math.min(ZOOM_MAX, _mZoom * factor));
+    _mTx = cx - (cx - _mTx)*(newZoom/_mZoom);
+    _mTy = cy - (cy - _mTy)*(newZoom/_mZoom);
+    _mZoom = newZoom;
+    _clampManual();
+    _manualZoom = true;
+    _applyManualToCam();
+    drawBoard();
+  },{passive:false});
+}
+// Override onCanvasClick to use effective camera for coord transform
+// (already handled — onCanvasClick reads _cam which is kept in sync)
+
+/* ── DRAW SCHEDULING ─────────────────────────────────────────── */
+let _drawPending = false;
+function scheduleDraw(){
+  if(_drawPending || _stepPath || _camAnimId) return;
+  _drawPending = true;
+  requestAnimationFrame(()=>{ _drawPending=false; if(G) drawBoard(); });
+}
+
 function drawBoard(){
+  // If a step animation is in progress, use the step draw path
+  if(_stepPath) { drawBoardWithStepPawn(); return; }
   if(!ctx||!G||!canvas||canvas.width===0)return;
   ctx.clearRect(0,0,BW,BH);
+  // Apply camera transform (zoom/pan)
+  ctx.save();
+  ctx.setTransform(_cam.scale, 0, 0, _cam.scale, _cam.tx, _cam.ty);
   drawBg();
   drawRoutes();
   drawCities();
   drawTokens();
   drawPawns();
+  ctx.restore();
+  // Draw zoom UI overlay (city name labels over highlighted dots) — in screen space
+  if(_camZoomed && G && G.phase==="move") drawZoomOverlay();
 }
 
 /* ── PHOTOREALISTIC BACKGROUND ───────────────────────────────── */
@@ -2538,38 +3277,116 @@ function drawCompassRose(){}
 function drawTitleCartouche(){}
 
 function drawRoutes(){
-  // Board image already shows all routes.
-  // Draw semi-transparent highlight for reachable cities only.
-  if(!G || !G.opts || G.opts.length === 0) return;
-  const reachSet = new Set(G.opts.map(o=>o.city));
+  if(!G || G.phase !== 'move') return;
+
   const p = curP();
 
-  // Highlight reachable paths with a soft glow line
-  const allRoutes = [...LAND_R, ...SEA_R];
-  ctx.save();
-  allRoutes.forEach(([a,b])=>{
-    const ca=CITIES[a], cb=CITIES[b];
-    if(!ca||!cb) return;
-    const aReach = a===p.loc || reachSet.has(a);
-    const bReach = b===p.loc || reachSet.has(b);
-    if(!(aReach && bReach)) return;
-    ctx.beginPath();
-    ctx.moveTo(cX(ca.x), cY(ca.y));
-    ctx.lineTo(cX(cb.x), cY(cb.y));
-    ctx.strokeStyle="rgba(255,230,80,.55)";
-    ctx.lineWidth=dS(3.5);
-    ctx.lineCap="round";
-    ctx.stroke();
+  // Build canonical dot lookup: canonKey -> opt
+  const reachDotMap = {};
+  const reachCitySet = new Set();
+  (G.opts||[]).forEach(opt=>{
+    if(opt.type==='dot' && opt.canonKey){
+      reachDotMap[opt.canonKey] = opt;
+    } else if(opt.type==='city'){
+      reachCitySet.add(opt.city);
+    }
   });
+
+  // All routes to draw: adjacent to current position + any route with a reachable dot
+  const routeSet = new Set();
+  if(p.dotPos){
+    routeSet.add(`${p.dotPos.from}|||${p.dotPos.to}`);
+  } else if(p.loc){
+    const adj = ADJ[p.loc] || {land:[], sea:[], air:[]};
+    [...adj.land, ...adj.sea, ...adj.air].forEach(e =>
+      routeSet.add(`${p.loc}|||${e.to}`));
+  }
+  (G.opts||[]).forEach(opt=>{
+    if(opt.type==='dot') routeSet.add(`${opt.from}|||${opt.to}`);
+  });
+
+
+  ctx.save();
+
+  routeSet.forEach(rk=>{
+    const [from, to] = rk.split('|||');
+    const ca = CITIES[from], cb = CITIES[to];
+    if(!ca || !cb) return;
+    const edgeLen = _getEdgeSteps(from, to);
+    const rtype = _getEdgeType(from, to);
+    const ax=cX(ca.x), ay=cY(ca.y), bx=cX(cb.x), by=cY(cb.y);
+    // Cities in canonical order for key building
+    const [c1, c2] = from < to ? [from, to] : [to, from];
+
+    // Faint route line
+    ctx.beginPath(); ctx.moveTo(ax,ay); ctx.lineTo(bx,by);
+    ctx.strokeStyle = rtype==='sea' ? 'rgba(60,140,255,0.22)' : 'rgba(255,240,80,0.18)';
+    ctx.lineWidth=dS(2); ctx.stroke();
+
+    // Draw every dot on this route, step index always counted from 'from' city
+    for(let s=1; s<edgeLen; s++){
+      const t = s / edgeLen;
+      const dx = ax+(bx-ax)*t, dy = ay+(by-ay)*t;
+
+      // Canonical step (from alphabetically-first city)
+      const canonStep = from < to ? s : edgeLen - s;
+      const key = `${c1}|${c2}|${canonStep}`;
+      const opt = reachDotMap[key];
+      const isReachable = !!opt;
+      const isSel = G.sel === key;
+
+      if(isSel){
+        ctx.beginPath(); ctx.arc(dx, dy, dS(8), 0, Math.PI*2);
+        ctx.fillStyle='rgba(30,200,60,0.95)';
+        ctx.fill();
+        ctx.strokeStyle='rgba(255,255,255,0.98)'; ctx.lineWidth=dS(2.5); ctx.stroke();
+      } else if(isReachable){
+        const r = dS(6);
+        ctx.beginPath(); ctx.arc(dx, dy, r, 0, Math.PI*2);
+        if(rtype==='sea'){
+          ctx.fillStyle='rgba(30,80,220,0.92)';
+        } else {
+          ctx.fillStyle='rgba(30,210,60,0.92)';
+        }
+        ctx.fill();
+        ctx.strokeStyle='rgba(255,255,255,0.90)'; ctx.lineWidth=dS(1.8); ctx.stroke();
+        ctx.beginPath(); ctx.arc(dx, dy, r+dS(3.5), 0, Math.PI*2);
+        ctx.strokeStyle= rtype==='sea' ? 'rgba(100,180,255,0.28)' : 'rgba(100,255,120,0.28)';
+        ctx.lineWidth=dS(1.2); ctx.stroke();
+      } else {
+        // Unreachable this turn — faint dot
+        ctx.beginPath(); ctx.arc(dx, dy, dS(3), 0, Math.PI*2);
+        ctx.fillStyle='rgba(255,255,255,0.13)'; ctx.fill();
+      }
+    }
+  });
+
+  // Draw "you are here" indicator when player is parked mid-route
+  if(p.dotPos){
+    const pxy = playerXY(p);
+    const px = cX(pxy.x), py = cY(pxy.y);
+    ctx.save();
+    ctx.beginPath(); ctx.arc(px, py, dS(7), 0, Math.PI*2);
+    ctx.strokeStyle = p.color; ctx.lineWidth = dS(2.5);
+    ctx.stroke();
+    ctx.restore();
+  }
+
   ctx.restore();
 }
-
 
 function drawCities(){
   if(!G) return;
   const p      = curP();
   const selCity= G.sel;
-  const reachSet = new Set((G.opts||[]).map(o=>o.city));
+  const reachSet = new Set();
+  const typeMap = {};
+  (G.opts||[]).filter(o=>o.type==='city').forEach(o=>{
+    reachSet.add(o.city);
+    typeMap[o.city] = o.routeType || 'land';
+  });
+
+  // Use shared pulse value driven by _startPulseLoop
 
   Object.entries(CITIES).forEach(([key,city])=>{
     const cx=cX(city.x), cy=cY(city.y);
@@ -2577,23 +3394,43 @@ function drawCities(){
     const isReach   = reachSet.has(key);
     const isCurrent = key === p.loc;
     const isSel     = key === selCity;
+    const rtype     = typeMap[key];
 
-    // Outer glow ring for special states
     if(isSel){
+      // Selected destination — large glowing green dot
+      const sr=dS(isStart?18:13);
       ctx.save();
-      ctx.shadowColor="#fff8a0"; ctx.shadowBlur=dS(12);
-      ctx.beginPath(); ctx.arc(cx,cy,dS(isStart?14:10),0,Math.PI*2);
-      ctx.strokeStyle="rgba(255,240,60,.9)"; ctx.lineWidth=dS(2.5); ctx.stroke();
+      ctx.beginPath(); ctx.arc(cx,cy,sr,0,Math.PI*2);
+      ctx.fillStyle="rgba(30,200,60,.85)"; ctx.fill();
+      ctx.strokeStyle="rgba(255,255,255,.98)"; ctx.lineWidth=dS(3.2); ctx.stroke();
+      // Inner checkmark circle
+      ctx.beginPath(); ctx.arc(cx,cy,sr*.45,0,Math.PI*2);
+      ctx.fillStyle="rgba(255,255,255,0.6)"; ctx.fill();
       ctx.restore();
     } else if(isReach){
+      // Large coloured dot — colour by transport type
+      const dotR = dS(isStart ? 9 : 7);
+      let fillCol, strokeCol, glowCol;
+      if(rtype === "air"){
+        fillCol="rgba(220,40,40,.92)"; strokeCol="rgba(255,180,180,.98)"; glowCol="#ff6060";
+      } else if(rtype === "sea"){
+        fillCol="rgba(30,80,220,.92)"; strokeCol="rgba(140,200,255,.98)"; glowCol="#60b0ff";
+      } else {
+        fillCol="rgba(30,210,60,.92)"; strokeCol="rgba(200,255,200,.98)"; glowCol="#60ff80";
+      }
       ctx.save();
-      ctx.shadowColor="rgba(255,220,50,.7)"; ctx.shadowBlur=dS(8);
-      ctx.beginPath(); ctx.arc(cx,cy,dS(isStart?12:8),0,Math.PI*2);
-      ctx.strokeStyle="rgba(255,200,40,.75)"; ctx.lineWidth=dS(2); ctx.stroke();
+      ctx.beginPath(); ctx.arc(cx,cy,dotR,0,Math.PI*2);
+      ctx.fillStyle=fillCol; ctx.fill();
+      ctx.strokeStyle=strokeCol; ctx.lineWidth=dS(1.8); ctx.stroke();
+      ctx.restore();
+
+      // Second outer ring for extra visibility
+      ctx.save();
+      ctx.beginPath(); ctx.arc(cx,cy,dotR+dS(3),0,Math.PI*2);
+      ctx.strokeStyle=strokeCol.replace(",.98)",",0.30)"); ctx.lineWidth=dS(1.2); ctx.stroke();
       ctx.restore();
     } else if(isCurrent){
       ctx.save();
-      ctx.shadowColor=p.color; ctx.shadowBlur=dS(14);
       ctx.beginPath(); ctx.arc(cx,cy,dS(isStart?13:9),0,Math.PI*2);
       ctx.strokeStyle=p.color; ctx.lineWidth=dS(2.5); ctx.stroke();
       ctx.restore();
@@ -2634,11 +3471,9 @@ function drawTokens(){
       const gs=dS(22); // gem diameter in pixels
       const half=gs/2;
       ctx.save();
-      ctx.shadowColor="rgba(0,0,0,.55)";ctx.shadowBlur=dS(5);
       // White circle backing for contrast
       ctx.beginPath();ctx.arc(tx,ty,half*.85,0,Math.PI*2);
       ctx.fillStyle="rgba(255,255,255,.9)";ctx.fill();
-      ctx.shadowBlur=0;
       // Draw SVG gem image if loaded
       const img=GEM_IMGS[tok.t];
       if(img&&img.complete&&img.naturalWidth>0){
@@ -2657,7 +3492,6 @@ function drawTokens(){
 
     ctx.save();
     // Token drop shadow
-    ctx.shadowColor="rgba(0,0,0,.55)";ctx.shadowBlur=dS(4);ctx.shadowOffsetX=dS(1);ctx.shadowOffsetY=dS(2);
     // Token face — ivory/bone coloured disc
     const g=ctx.createRadialGradient(tx-tr*.35,ty-tr*.35,dS(.5),tx,ty,tr);
     g.addColorStop(0,"#f0e8cc");
@@ -2666,7 +3500,6 @@ function drawTokens(){
     g.addColorStop(1,"#8a6030");
     ctx.beginPath();ctx.arc(tx,ty,tr,0,Math.PI*2);
     ctx.fillStyle=g;ctx.fill();
-    ctx.shadowBlur=0;ctx.shadowOffsetX=0;ctx.shadowOffsetY=0;
     // Rim
     ctx.strokeStyle="#7a5020";ctx.lineWidth=dS(1.6);ctx.stroke();
     // Inner ring engraving
@@ -2683,20 +3516,119 @@ function drawTokens(){
   });
 }
 
+/* ── ZOOM OVERLAY — city labels drawn in screen space ── */
+function drawZoomOverlay(){
+  if(!G||!G.opts) return;
+  const p = curP();
+  const reachCities = new Set(G.opts.filter(o=>o.type==='city').map(o=>o.city));
+  const costMap = {};
+  G.opts.filter(o=>o.type==='city').forEach(o=>costMap[o.city]=o.cost);
+  const typeMap = {};
+  G.opts.filter(o=>o.type==='city').forEach(o=>typeMap[o.city]=o.routeType);
+
+  const toScreen = (bx, by) => ({
+    x: bx * BW * _cam.scale + _cam.tx,
+    y: by * BH * _cam.scale + _cam.ty
+  });
+
+  ctx.save();
+
+  Object.entries(CITIES).forEach(([key, city]) => {
+    const isReach = reachCities.has(key);
+    const isCurrent = key === (p.loc||'');
+    const isSel = G.sel === key;
+    if(!isReach && !isCurrent) return;
+
+    const sc = toScreen(city.x, city.y);
+    const dotR = _cam.scale * dS(isSel ? 10 : 5);
+    const cityName = city.n;
+    const fsz = Math.max(9, Math.min(15, _cam.scale * dS(6)));
+    ctx.font = `bold ${fsz}px Georgia,serif`;
+    ctx.textAlign = "center";
+    ctx.textBaseline = "top";
+    const labelY = sc.y + dotR + 3;
+    const tw = ctx.measureText(cityName).width;
+    const ph = fsz + 6, pw = tw + 14;
+    const lx = sc.x - pw/2, ly = labelY - 1;
+
+    let bgCol, textCol, borderCol;
+    if(isSel){
+      bgCol="rgba(20,180,50,0.92)"; textCol="#fff"; borderCol="#a0ffb0";
+    } else if(isReach){
+      const rt = typeMap[key];
+      if(rt==="air"){ bgCol="rgba(160,30,30,0.88)"; textCol="#ffd0d0"; borderCol="#ff8080"; }
+      else if(rt==="sea"){ bgCol="rgba(20,60,160,0.88)"; textCol="#c0dfff"; borderCol="#80c0ff"; }
+      else { bgCol="rgba(8,90,18,0.88)"; textCol="#d0ffd0"; borderCol="#40cc60"; }
+    } else { bgCol="rgba(20,20,20,0.7)"; textCol="#ccc"; borderCol="#555"; }
+
+    const rad = fsz * 0.45;
+    ctx.fillStyle = bgCol;
+    ctx.beginPath();
+    ctx.moveTo(lx+rad,ly); ctx.lineTo(lx+pw-rad,ly);
+    ctx.quadraticCurveTo(lx+pw,ly,lx+pw,ly+rad);
+    ctx.lineTo(lx+pw,ly+ph-rad); ctx.quadraticCurveTo(lx+pw,ly+ph,lx+pw-rad,ly+ph);
+    ctx.lineTo(lx+rad,ly+ph); ctx.quadraticCurveTo(lx,ly+ph,lx,ly+ph-rad);
+    ctx.lineTo(lx,ly+rad); ctx.quadraticCurveTo(lx,ly,lx+rad,ly);
+    ctx.closePath(); ctx.fill();
+    ctx.strokeStyle=borderCol; ctx.lineWidth=1.2; ctx.stroke();
+    ctx.fillStyle=textCol;
+    ctx.fillText(cityName, sc.x, labelY+3);
+
+    const cost = costMap[key];
+    if(cost > 0){
+      const costStr = cost>=500 ? "✈ £"+cost : "⛵ £"+cost;
+      const cfsz = Math.max(8, fsz*0.85);
+      ctx.font=`bold ${cfsz}px Georgia,serif`;
+      const cy2=labelY+ph+2, ctw=ctx.measureText(costStr).width;
+      const cpw=ctw+10, cph=cfsz+5, clx=sc.x-cpw/2;
+      ctx.fillStyle= cost>=500?"rgba(140,20,20,0.92)":"rgba(15,50,140,0.92)";
+      ctx.beginPath();
+      if(ctx.roundRect) ctx.roundRect(clx,cy2,cpw,cph,4); else ctx.rect(clx,cy2,cpw,cph);
+      ctx.fill();
+      ctx.strokeStyle= cost>=500?"#ff9090":"#80b8ff"; ctx.lineWidth=1; ctx.stroke();
+      ctx.fillStyle="#fff"; ctx.fillText(costStr, sc.x, cy2+2.5);
+    }
+  });
+
+  // Hint
+  if(!pendingMove && _camZoomed){
+    const hasDots = G.opts.some(o=>o.type==='dot');
+    const hint = hasDots ? "Tap a green dot or city to move" : "Tap a highlighted city to move";
+    const hfsz = Math.max(10, Math.min(14, SC*13));
+    ctx.font=`${hfsz}px Georgia,serif`;
+    ctx.textAlign="center"; ctx.textBaseline="bottom";
+    const htw=ctx.measureText(hint).width;
+    const hpw=htw+20, hph=hfsz+10, hx=BW/2-hpw/2, hy=BH-16-hph;
+    ctx.fillStyle="rgba(8,4,0,0.85)";
+    ctx.beginPath();
+    if(ctx.roundRect) ctx.roundRect(hx,hy,hpw,hph,8); else ctx.rect(hx,hy,hpw,hph);
+    ctx.fill();
+    ctx.strokeStyle="rgba(245,200,66,0.5)"; ctx.lineWidth=1; ctx.stroke();
+    ctx.fillStyle="#f5c842";
+    ctx.fillText(hint, BW/2, BH-16-5);
+  }
+
+  ctx.restore();
+}
+
 /* ── PHOTOREALISTIC PAWNS ────────────────────────────────────── */
 function drawPawns(){
-  const byLoc={};
-  G.players.forEach((p,i)=>{(byLoc[p.loc]=byLoc[p.loc]||[]).push({p,i});});
-  Object.entries(byLoc).forEach(([loc,list])=>{
-    if(!CITIES[loc])return;
-    const c=CITIES[loc];
-    list.forEach(({p},off)=>{
-      const angle=off/list.length*Math.PI*2-Math.PI/2;
-      const spread=list.length>1?dS(14):0;
+  // Group players at same position for offset spreading
+  const groups = {};
+  G.players.forEach((p,i)=>{
+    const xy = playerXY(p);
+    const key = `${xy.x.toFixed(4)}|${xy.y.toFixed(4)}`;
+    if(!groups[key]) groups[key]={xy, players:[]};
+    groups[key].players.push({p,i});
+  });
+  Object.values(groups).forEach(({xy,players})=>{
+    players.forEach(({p,i},off)=>{
+      const angle=off/players.length*Math.PI*2-Math.PI/2;
+      const spread=players.length>1?dS(14):0;
       drawPawn(
-        cX(c.x)+Math.cos(angle)*spread,
-        cY(c.y)+Math.sin(angle)*spread-dS(18),
-        p.color,G.cur===G.players.indexOf(p),p.holding
+        cX(xy.x)+Math.cos(angle)*spread,
+        cY(xy.y)+Math.sin(angle)*spread-dS(18),
+        p.color, G.cur===i, p.holding
       );
     });
   });
@@ -2705,7 +3637,6 @@ function drawPawns(){
 function drawPawn(x,y,col,active,holding){
   ctx.save();
   if(active){
-    ctx.shadowColor=col;ctx.shadowBlur=dS(14);
   }
 
   // Cast shadow on board
@@ -2759,7 +3690,6 @@ function drawPawn(x,y,col,active,holding){
 
   // Holding indicator
   if(holding){
-    ctx.shadowBlur=0;
     ctx.font=dS(9)+"px sans-serif";ctx.textAlign="center";ctx.textBaseline="middle";
     ctx.fillText(holding==="diamond"?"💎":"🧲",x,y-dS(5));
   }
@@ -3276,7 +4206,7 @@ function openStats(){
     let rows = sorted.slice(0,10).map(e =>
       `<tr class="lb-row">
         <td>${e.name}${e.type==='ai'?' 🤖':''}</td>
-        <td style="color:#907050;font-size:11px;">${e.date}</td>
+        <td style="color:#b08860;font-size:12px;">${e.date}</td>
         <td class="lb-wr">£${e.money.toLocaleString()}</td>
       </tr>`
     ).join('');
@@ -3317,17 +4247,17 @@ function hideHandoff(){
 <!-- ═══════════════ STATS / LEADERBOARD ═══════════════ -->
 <div id="sStats" class="screen off">
   <div class="stats-wrap">
-    <div class="stats-title">💎 Hall of Fame</div>
+    <div class="stats-title"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor" style="vertical-align:middle;margin-right:6px"><path d="M19 3H5L2 9l10 12L22 9l-3-6zm-8.5 11.5L5.66 9H8.5l2 5.5zm3 0l-2-5.5h3l-2 5.5zM12 18l-2.5-6.5h5L12 18zm5-9h2.34L17 14.5 15.5 9H17zm-9.5 0h1.5L7.5 14.5 6 9H7.5z"/></svg> Hall of Fame</div>
     <div class="stats-sub">Diamond Hunt · Career Stats</div>
 
     <div class="stats-section">
       <div class="stats-section-lbl">Overall</div>
-      <div class="stat-row"><span class="sr-icon">🎮</span><span class="sr-lbl">Games Played</span><span class="sr-val" id="st-played">0</span></div>
-      <div class="stat-row"><span class="sr-icon">🏆</span><span class="sr-lbl">Total Wins</span><span class="sr-val" id="st-wins">0</span></div>
-      <div class="stat-row"><span class="sr-icon">📊</span><span class="sr-lbl">Win Rate</span><span class="sr-val" id="st-rate">—</span></div>
-      <div class="stat-row"><span class="sr-icon">💎</span><span class="sr-lbl">Diamonds Found</span><span class="sr-val" id="st-diamonds">0</span></div>
-      <div class="stat-row"><span class="sr-icon">💰</span><span class="sr-lbl">Most Money Won</span><span class="sr-val" id="st-richest">£0</span></div>
-      <div class="stat-row"><span class="sr-icon">💎</span><span class="sr-lbl">Best Gem Haul</span><span class="sr-val" id="st-gems">£0</span></div>
+      <div class="stat-row"><span class="sr-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M21 6H3c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h18c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-10 7H8v3H6v-3H3v-2h3V8h2v3h3v2zm4.5 2c-.83 0-1.5-.67-1.5-1.5S14.67 13 15.5 13s1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm4-3c-.83 0-1.5-.67-1.5-1.5S18.67 10 19.5 10s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/></svg></span><span class="sr-lbl">Games Played</span><span class="sr-val" id="st-played">0</span></div>
+      <div class="stat-row"><span class="sr-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 5h-2V3H7v2H5c-1.1 0-2 .9-2 2v1c0 2.55 1.92 4.63 4.39 4.94A5.01 5.01 0 0 0 11 15.9V18H7v2h10v-2h-4v-2.1a5.01 5.01 0 0 0 3.61-2.96C19.08 12.63 21 10.55 21 8V7c0-1.1-.9-2-2-2zM5 8V7h2v3.82C5.84 10.4 5 9.3 5 8zm14 0c0 1.3-.84 2.4-2 2.82V7h2v1z"/></svg></span><span class="sr-lbl">Total Wins</span><span class="sr-val" id="st-wins">0</span></div>
+      <div class="stat-row"><span class="sr-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M7 11H1v8h6v-8zm6-8H7v16h6V3zm6 5h-6v11h6V8z"/></svg></span><span class="sr-lbl">Win Rate</span><span class="sr-val" id="st-rate">—</span></div>
+      <div class="stat-row"><span class="sr-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5L2 9l10 12L22 9l-3-6zm-8.5 11.5L5.66 9H8.5l2 5.5zm3 0l-2-5.5h3l-2 5.5zM12 18l-2.5-6.5h5L12 18zm5-9h2.34L17 14.5 15.5 9H17zm-9.5 0h1.5L7.5 14.5 6 9H7.5z"/></svg></span><span class="sr-lbl">Diamonds Found</span><span class="sr-val" id="st-diamonds">0</span></div>
+      <div class="stat-row"><span class="sr-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg></span><span class="sr-lbl">Most Money Won</span><span class="sr-val" id="st-richest">£0</span></div>
+      <div class="stat-row"><span class="sr-icon"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M19 3H5L2 9l10 12L22 9l-3-6zm-8.5 11.5L5.66 9H8.5l2 5.5zm3 0l-2-5.5h3l-2 5.5zM12 18l-2.5-6.5h5L12 18zm5-9h2.34L17 14.5 15.5 9H17zm-9.5 0h1.5L7.5 14.5 6 9H7.5z"/></svg></span><span class="sr-lbl">Best Gem Haul</span><span class="sr-val" id="st-gems">£0</span></div>
     </div>
 
     <div class="stats-section">
