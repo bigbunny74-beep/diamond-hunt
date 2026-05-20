@@ -962,92 +962,105 @@ let _boardImgLoaded = false;
 })();
 
 const CITIES = {
-  tangier:     {n:"Tangiers",       x:.195,y:.055,start:true},
-  cairo:       {n:"Cairo",          x:.620,y:.055,start:true},
-  canary:      {n:"Canary Islands", x:.060,y:.115},
-  casablanca:  {n:"Casablanca",     x:.220,y:.115},
-  tunis:       {n:"Tunis",          x:.415,y:.060},
-  sahara:      {n:"Sahara",         x:.390,y:.220},
-  ashanti:     {n:"Ashanti",        x:.600,y:.195},
-  portsudan:   {n:"Port Sudan",     x:.755,y:.260},
-  timbuktu:    {n:"Timbuktu",       x:.265,y:.285,special:"slave_coast"},
-  khartoum:    {n:"Khartoum",       x:.665,y:.285},
-  sierraleone: {n:"Sierra Leone",   x:.115,y:.400,island:true},
-  goldcoast:   {n:"Gold Coast",     x:.200,y:.470,special:"gold_coast"},
-  lagos:       {n:"Lagos",          x:.325,y:.430,special:"slave_coast"},
-  abeba:       {n:"Addis Abeba",    x:.780,y:.360},
-  capeguard:   {n:"Cape Guardafui", x:.870,y:.305,island:true},
-  lakevic:     {n:"Lake Victoria",  x:.730,y:.480},
-  katanga:     {n:"Katanga",        x:.490,y:.550},
-  darsalaam:   {n:"Dar es Salaam",  x:.795,y:.545},
-  luanda:      {n:"Luanda",         x:.355,y:.615},
-  vicfalls:    {n:"Victoria Falls", x:.490,y:.665},
-  whalfbay:    {n:"Walefah Bay",    x:.370,y:.730},
-  mozambique:  {n:"Mozambique",     x:.730,y:.640},
-  tamatave:    {n:"Tamatave",       x:.880,y:.655,island:true},
-  dragmtn:     {n:"Dragon Mountain",x:.590,y:.730},
-  capestmarie: {n:"Cape St Marie",  x:.870,y:.770,island:true},
-  capetown:    {n:"Cape Town",      x:.490,y:.870},
+  // Start cities (red diamonds at top)
+  tangier:     {n:"Tangiers",        x:.195,y:.058,start:true},
+  cairo:       {n:"Cairo",           x:.620,y:.058,start:true},
+  // Other cities - positions matched to board image
+  canary:      {n:"Canary Islands",  x:.060,y:.120},
+  casablanca:  {n:"Casablanca",      x:.215,y:.120},
+  tunis:       {n:"Tunis",           x:.415,y:.058},
+  sahara:      {n:"Sahara",          x:.415,y:.220},
+  ashanti:     {n:"Ashanti",         x:.580,y:.215},
+  portsudan:   {n:"Port Sudan",      x:.755,y:.270},
+  timbuktu:    {n:"Timbuktu",        x:.270,y:.300,special:"slave_coast"},
+  khartoum:    {n:"Khartoum",        x:.635,y:.365},
+  sierraleone: {n:"Sierra Leone",    x:.115,y:.415,island:true},
+  goldcoast:   {n:"Gold Coast",      x:.205,y:.480,special:"gold_coast"},
+  lagos:       {n:"Lagos",           x:.325,y:.445,special:"slave_coast"},
+  abeba:       {n:"Addis Abeba",     x:.775,y:.375},
+  capeguard:   {n:"Cape Guardafui",  x:.865,y:.310,island:true},
+  lakevic:     {n:"Lake Victoria",   x:.715,y:.490},
+  katanga:     {n:"Katanga",         x:.490,y:.565},
+  darsalaam:   {n:"Dar es Salaam",   x:.795,y:.560},
+  luanda:      {n:"Luanda",          x:.360,y:.625},
+  vicfalls:    {n:"Victoria Falls",  x:.490,y:.670},
+  whalfbay:    {n:"Walefah Bay",     x:.370,y:.740},
+  mozambique:  {n:"Mozambique",      x:.730,y:.650},
+  tamatave:    {n:"Tamatave",        x:.880,y:.660,island:true},
+  dragmtn:     {n:"Dragon Mountain", x:.595,y:.745},
+  capestmarie: {n:"Cape St Marie",   x:.870,y:.780,island:true},
+  capetown:    {n:"Cape Town",       x:.490,y:.875},
 };
 
 // ── ROUTE DATA WITH STEP COUNTS ─────────────────────────────────
 // Each entry: [cityA, cityB, steps]
-// Steps = number of dot spaces on that route from the real board.
+// Steps = dots counted carefully from the real board image.
+// Cities do NOT count as steps — only the black dots between them.
 const LAND_R=[
-  ["tangier","casablanca",2],
-  ["tangier","tunis",3],
-  ["tangier","sahara",4],
-  ["casablanca","sierraleone",5],
-  ["tunis","cairo",2],
-  ["tunis","sahara",3],
-  ["cairo","ashanti",4],
-  ["cairo","portsudan",3],
-  ["sahara","timbuktu",3],
-  ["sahara","khartoum",4],
-  ["ashanti","portsudan",3],
-  ["ashanti","khartoum",2],
-  ["portsudan","khartoum",2],
-  ["portsudan","abeba",2],
-  ["portsudan","capeguard",3],
-  ["timbuktu","sierraleone",3],
-  ["timbuktu","goldcoast",2],
-  ["timbuktu","lagos",2],
-  ["sierraleone","goldcoast",2],
-  ["goldcoast","lagos",2],
-  ["khartoum","abeba",2],
-  ["abeba","capeguard",3],
-  ["abeba","lakevic",3],
-  ["lagos","katanga",4],
-  ["lagos","luanda",4],
-  ["katanga","luanda",3],
-  ["katanga","lakevic",2],
-  ["katanga","vicfalls",2],
-  ["katanga","darsalaam",3],
-  ["lakevic","darsalaam",2],
-  ["lakevic","mozambique",3],
-  ["luanda","whalfbay",2],
-  ["luanda","vicfalls",3],
-  ["vicfalls","dragmtn",2],
-  ["vicfalls","whalfbay",2],
-  ["darsalaam","mozambique",2],
-  ["mozambique","dragmtn",3],
-  ["mozambique","tamatave",3],
-  ["tamatave","capestmarie",2],
-  ["dragmtn","capetown",2],
-  ["whalfbay","capetown",2],
+  // Northern routes
+  ["tangier","casablanca",1],      // 1 dot between them (close)
+  ["tangier","tunis",3],           // 3 dots
+  ["casablanca","timbuktu",3],     // 3 dots via the inland route
+  ["tunis","cairo",3],             // 3 dots
+  ["tunis","sahara",3],            // 3 dots
+  ["cairo","ashanti",3],           // 3 dots
+  ["cairo","portsudan",2],         // 2 dots
+  // Sahara connections
+  ["sahara","timbuktu",3],         // 3 dots
+  ["sahara","ashanti",3],          // 3 dots (Sahara connects east to Ashanti)
+  // West Africa
+  ["timbuktu","sierraleone",3],    // 3 dots
+  ["timbuktu","goldcoast",2],      // 2 dots
+  ["timbuktu","lagos",2],          // 2 dots
+  ["sierraleone","goldcoast",2],   // 2 dots
+  ["goldcoast","lagos",2],         // 2 dots
+  // East upper
+  ["ashanti","portsudan",3],       // 3 dots
+  ["ashanti","khartoum",2],        // 2 dots
+  ["portsudan","khartoum",2],      // 2 dots
+  ["portsudan","abeba",2],         // 2 dots
+  ["portsudan","capeguard",3],     // 3 dots
+  ["khartoum","abeba",2],          // 2 dots
+  ["abeba","capeguard",3],         // 3 dots
+  ["abeba","lakevic",3],           // 3 dots
+  // Central
+  ["lagos","katanga",3],           // 3 dots (was 4)
+  ["lagos","luanda",3],            // 3 dots - exists on real board
+  ["katanga","luanda",2],          // 2 dots (was 3)
+  ["katanga","lakevic",2],         // 2 dots
+  ["katanga","vicfalls",2],        // 2 dots
+  ["katanga","darsalaam",3],       // 3 dots
+  ["lakevic","darsalaam",2],       // 2 dots
+  ["lakevic","mozambique",3],      // 3 dots
+  // Southwest
+  ["luanda","whalfbay",2],         // 2 dots
+  ["luanda","vicfalls",2],         // 2 dots (was 3)
+  ["vicfalls","whalfbay",2],       // 2 dots
+  ["vicfalls","dragmtn",2],        // 2 dots
+  // Southeast
+  ["darsalaam","mozambique",2],    // 2 dots
+  ["mozambique","dragmtn",3],      // 3 dots
+  ["mozambique","tamatave",3],     // 3 dots
+  ["tamatave","capestmarie",2],    // 2 dots
+  // Southern
+  ["dragmtn","capetown",2],        // 2 dots
+  ["whalfbay","capetown",2],       // 2 dots
 ];
 const SEA_R=[
-  ["tangier","canary",3],
-  ["casablanca","canary",2],
-  ["canary","sierraleone",4],
-  ["sierraleone","capetown",6],
-  ["capetown","capestmarie",5],
-  ["capestmarie","tamatave",2],
-  ["tamatave","capeguard",5],
-  ["capeguard","cairo",4],
-  ["casablanca","goldcoast",5],
-  ["luanda","capetown",4],
-  ["mozambique","capestmarie",3],
+  // West coast (blue dashed routes)
+  ["tangier","canary",3],          // 3 sea dashes
+  ["casablanca","canary",2],       // 2 sea dashes
+  ["canary","sierraleone",4],      // 4 sea dashes
+  ["sierraleone","capetown",6],    // 6 sea dashes (long west coast route)
+  ["capetown","capestmarie",5],    // 5 sea dashes (south coast)
+  // East coast (blue dashed routes)
+  ["capestmarie","tamatave",2],    // 2 sea dashes
+  ["tamatave","capeguard",5],      // 5 sea dashes
+  ["capeguard","cairo",4],         // 4 sea dashes (Red Sea)
+  // Other sea routes
+  ["casablanca","goldcoast",5],    // 5 sea dashes (west Africa coast)
+  ["luanda","capetown",4],         // 4 sea dashes
+  ["mozambique","capestmarie",3],  // 3 sea dashes
 ];
 const AIR_R=[];
 
